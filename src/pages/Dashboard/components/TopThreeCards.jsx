@@ -47,9 +47,9 @@ const TopThreeCards = () => {
   ];
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 mt-8">
+    <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3 mt-8">
       {/* Total Balance Card */}
-      <div className="bg-white flex flex-col gap-3 py-5 p-3 rounded-2xl shadow-md">
+      <div className="bg-white flex flex-col gap-3 py-5 p-3 rounded-2xl shadow">
         <h3 className="text-xl font-medium text-[#939393]">{cards[0].title}</h3>
         <div className="flex justify-between pl-2 items-center">
           <h3 className="text-xl font-extrabold text-black">
@@ -86,7 +86,7 @@ const TopThreeCards = () => {
       </div>
 
       {/* Goals Card */}
-      <div className="bg-white flex flex-col gap-3 justify-between py-5 p-3 rounded-2xl shadow-md">
+      <div className="bg-white flex flex-col gap-3 justify-between py-5 p-3 rounded-2xl shadow">
         <h3 className="text-xl font-medium text-[#939393]">{cards[1].title}</h3>
         <div className="flex justify-between pl-2 items-center">
           <div className="flex gap-1 items-center">
@@ -101,8 +101,8 @@ const TopThreeCards = () => {
             {cards[1].subTitle}
           </p>
         </div>
-        <div className="pl-2 flex gap-2">
-          <div className="flex min-w-max flex-col gap-3">
+        <div className="pl-2 flex flex-col sm:flex-row gap-2">
+          <div className="flex sm:min-w-max sm:flex-col gap-3">
             <div className="">
               <div className=" flex items-center gap-2">
                 <img src="/public/images/icon/icon-gray-award.svg" />
@@ -154,12 +154,12 @@ const TopThreeCards = () => {
       </div>
 
       {/* Upcoming Bill Card */}
-      <div className="bg-white flex flex-col justify-between gap-3 py-5 p-3 rounded-2xl shadow-md">
+      <div className="bg-white flex flex-col justify-between gap-3 py-5 p-3 rounded-2xl shadow">
         <h3 className="text-xl font-medium text-[#939393]">{cards[2].title}</h3>
         <div className="pl-2 text-[#636363] flex flex-col gap-4">
           {cards[2].bills.map((bill, idx) => (
             <div key={idx} className="flex justify-between items-center gap-1">
-              <div className=" bg-[#c5c5c5] flex flex-col w-1/4 items-center px-2 py-3 rounded-md">
+              <div className=" bg-[#c5c5c5] flex flex-col w-12 items-center px-2 py-3 rounded-md">
                 <p className="">{bill.month}</p>
                 <p className="text-black font-extrabold">{bill.date}</p>
               </div>

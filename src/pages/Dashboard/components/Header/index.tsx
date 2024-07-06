@@ -11,7 +11,7 @@ const Header = (props: {
 }) => {
   console.log(props.sidebarOpen)
   return (
-    <header className="sticky top-0 z-999 flex w-full  bg-[#fbfbfb] backdrop-filter backdrop-blur-sm">
+    <header className="sticky top-0 z-999 flex flex-col w-full  bg-[#fbfbfb] backdrop-filter backdrop-blur-sm">
       <div className="flex flex-grow items-center justify-between px-4 py-4 2xl:px-11">
         <div className="flex items-center gap-2 sm:gap-4 lg:hidden">
           {/* <!-- Hamburger Toggle BTN --> */}
@@ -110,7 +110,7 @@ const Header = (props: {
                 </div>
               </form>
             </div>
-            <div className="relative flex w-max items-center justify-center rounded-full py-2 px-3 bg-[#71299d] text-white">
+            <div className="relative hidden sm:flex w-max items-center justify-center rounded-full py-2 px-3 bg-[#71299d] text-white">
               + Add Expense
             </div>
             {/* <!-- Dark Mode Toggler --> */}
@@ -129,6 +129,9 @@ const Header = (props: {
           {/* <!-- User Area --> */}
         </div>
       </div>
+      <div className="relative flex self-end sm:hidden w-max items-center justify-center rounded-full py-2 px-3 bg-[#71299d] text-white">
+              + Add Expense
+            </div>
     </header>
   );
 };

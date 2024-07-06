@@ -42,7 +42,7 @@ const RecentTransactions = () => {
   return (
     <div className="w-full text-[#7c7c80]">
       <h2 className="text-2xl mb-4">Recent Transactions</h2>
-      <div className="bg-white rounded-lg shadow-lg p-4">
+      <div className="bg-white rounded-lg shadow p-4">
         <div className="flex justify-between mb-4">
           <button className="font-semibold text-purple-500 border-b-2 border-purple-500 pb-2">
             All
