@@ -1,11 +1,9 @@
 import React from 'react';
 import DefaultLayout from '../../layout/DefaultLayout';
-import TopFourCards from './components/TopFourCards';
-import OverviewSection from './components/OverviewSection';
-import RecentDeals from './components/RecentDeals';
-import LeadsSection from './components/LeadsSection';
-import RuningProjectsSection from './components/RuningProjectsSection';
+import TopThreeCards from './components/TopThreeCards';
+import RecentTransactions from "./components/RecentTransactions"
 import { useSidebarStore } from '../../Store Management/useSidebarStore';
+import Statistics from "./components/Statistics"
 import Header from './components/Header';
 const Dashboard = () => {
   const { sidebarOpen, setSidebarOpen } = useSidebarStore();
@@ -14,11 +12,15 @@ const Dashboard = () => {
       {/* <!-- ===== Header Start ===== --> */}
       <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
       {/* <!-- ===== Header End ===== --> */}
-      <TopFourCards />
-      <OverviewSection />
-      <RecentDeals />
-      <LeadsSection />
-      <RuningProjectsSection />
+      <TopThreeCards />
+      <div className=" mt-8 grid gap-3 grid-cols-10">
+      <div className=" col-span-10 md:col-span-3 flex flex-col gap-3">
+        <RecentTransactions/>
+      </div>
+      <div className=" col-span-10 md:col-span-7 h-full flex gap-3 flex-col">
+        <Statistics/>
+      </div>
+    </div>
     </DefaultLayout>
   );
 };

@@ -72,7 +72,7 @@ const Header = (props: {
         <div className="flex items-center gap-3 2xsm:gap-7">
           <ul className="flex items-center gap-2 2xsm:gap-4">
             {/* Search field */}
-            <div className="hidden sm:block">
+            <div className="hidden max-w-64 sm:block">
               <form
                 action="https://formbold.com/s/unique_form_id"
                 method="POST"
@@ -110,7 +110,7 @@ const Header = (props: {
                 </div>
               </form>
             </div>
-            <div className="relative flex items-center justify-center rounded-full py-2 px-3 bg-[#71299d] text-white">
+            <div className="relative flex w-max items-center justify-center rounded-full py-2 px-3 bg-[#71299d] text-white">
               + Add Expense
             </div>
             {/* <!-- Dark Mode Toggler --> */}
