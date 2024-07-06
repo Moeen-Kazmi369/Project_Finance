@@ -28,13 +28,6 @@ const DefaultLayout: React.FC<{ children: ReactNode }> = ({ children }) => {
           {/* <!-- ===== Main Content End ===== --> */}
         </div>
         {/* <!-- ===== Content Area End ===== --> */}
-        <div style={{
-              zIndex:9999999
-            }} className="flex right-0 bottom-10 fixed justify-end mb-8">
-              <div className=" flex items-center justify-center bg-gradient-to-b from-[#4B2AAD] to-[#6E4AD3] w-28 h-20 rounded-l-full shadow-2xl  shadow-[#8061D98F]">
-                <img src={ChatIcon} />
-              </div>
-            </div>
       </div>
       {/* <!-- ===== Page Wrapper End ===== --> */}
 
