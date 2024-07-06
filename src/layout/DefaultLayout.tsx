@@ -1,0 +1,45 @@
+import React, { useState, ReactNode } from 'react';
+// import Header from '../components/Header/index';
+import Sidebar from '../components/Sidebar/index';
+import ChatIcon from '../../public/images/icon/Message.svg';
+import {useSidebarStore} from "../Store Management/useSidebarStore"
+const DefaultLayout: React.FC<{ children: ReactNode }> = ({ children }) => {
+  const { sidebarOpen, setSidebarOpen } = useSidebarStore();
+  return (
+    <div className="bg-[#151515] relative text-bodydark">
+      {/* <!-- ===== Page Wrapper Start ===== --> */}
+      <div className="flex h-screen overflow-hidden">
+        {/* <!-- ===== Sidebar Start ===== --> */}
+        <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
+        {/* <!-- ===== Sidebar End ===== --> */}
+
+        {/* <!-- ===== Content Area Start ===== --> */}
+        <div className="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden">
+          {/* <!-- ===== Header Start ===== --> */}
+          {/* <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} /> */}
+          {/* <!-- ===== Header End ===== --> */}
+
+          {/* <!-- ===== Main Content Start ===== --> */}
+          <main className=" bg-[#101010] p-8">
+            <div className="mx-auto max-w-screen-2xl rounded-2xl 2xl:max-w-[2000px] bg-[#ffff] min-h-screen p-4 md:p-6 2xl:p-10">
+              {children}
+            </div>
+          </main>
+          {/* <!-- ===== Main Content End ===== --> */}
+        </div>
+        {/* <!-- ===== Content Area End ===== --> */}
+        <div style={{
+              zIndex:9999999
+            }} className="flex right-0 bottom-10 fixed justify-end mb-8">
+              <div className=" flex items-center justify-center bg-gradient-to-b from-[#4B2AAD] to-[#6E4AD3] w-28 h-20 rounded-l-full shadow-2xl  shadow-[#8061D98F]">
+                <img src={ChatIcon} />
+              </div>
+            </div>
+      </div>
+      {/* <!-- ===== Page Wrapper End ===== --> */}
+
+    </div>
+  );
+};
+
+export default DefaultLayout;
