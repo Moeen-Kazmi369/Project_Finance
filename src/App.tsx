@@ -4,7 +4,7 @@ import { Route, Routes, useLocation } from 'react-router-dom';
 import Loader from './common/Loader';
 import PageTitle from './components/PageTitle';
 import Dashboard from './pages/Dashboard/Dashboard';
-
+import Expenses from './pages/Expenses/Expenses';
 function App() {
   const [loading, setLoading] = useState<boolean>(true);
   const { pathname } = useLocation();
@@ -31,6 +31,15 @@ function App() {
             <>
               <PageTitle title="Dashboard" />
               <Dashboard />
+            </>
+          }
+        />
+        <Route
+          path="/dashboard/expenses"
+          element={
+            <>
+              <PageTitle title="Expenses" />
+              <Expenses />
             </>
           }
         />
