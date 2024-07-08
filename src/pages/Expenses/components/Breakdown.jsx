@@ -72,7 +72,7 @@ const data = [
 ];
 const Breakdown = () => {
   return (
-    <div className="grid grid-cols-3 gap-10">
+    <div className="grid xl:grid-cols-3 sm:grid-cols-2 xl:gap-10 lg:gap-7 gap-5">
       {data.map((item, index) => (
         <div key={index} className=" rounded-lg shadow-lg  ">
           <div className="flex justify-between items-center border-b py-4 bg-[#FAFAFA] p-4 rounded-t-xl">
