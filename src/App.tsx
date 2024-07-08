@@ -5,6 +5,8 @@ import Loader from './common/Loader';
 import PageTitle from './components/PageTitle';
 import Dashboard from './pages/Dashboard/Dashboard';
 import Expenses from './pages/Expenses/Expenses';
+import Revenues from './pages/Revenues/Revenues';
+import Savings from "./pages/Savings/Savings"
 function App() {
   const [loading, setLoading] = useState<boolean>(true);
   const { pathname } = useLocation();
@@ -29,17 +31,39 @@ function App() {
           path="/"
           element={
             <>
-              <PageTitle title="Dashboard" />
+              <PageTitle title="Finance | Dashboard" />
               <Dashboard />
             </>
           }
         />
+        {/* Dashboard End */}
+        {/* Expenses  */}
         <Route
-          path="/dashboard/expenses"
+          path="/expenses"
           element={
             <>
-              <PageTitle title="Expenses" />
+              <PageTitle title="Finacne | Expenses" />
               <Expenses />
+            </>
+          }
+        />
+        {/* Reveneus  */}
+        <Route
+          path="/revenues"
+          element={
+            <>
+              <PageTitle title="Finacne | Revenues" />
+              <Revenues />
+            </>
+          }
+        />
+        {/* Savings */}
+        <Route
+          path="/savings"
+          element={
+            <>
+              <PageTitle title="Finacne | Savings" />
+              <Savings />
             </>
           }
         />

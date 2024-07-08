@@ -8,8 +8,6 @@ import DarkModeSwitcher from './DarkModeSwitcher';
 const Header = (props: {
   sidebarOpen: string | boolean | undefined;
   setSidebarOpen: (arg0: boolean) => void;
-  isAEOpen: string | boolean | undefined;
-  setIsAEOpen: (arg0: boolean) => void;
 }) => {
   console.log(props.sidebarOpen)
   console.log(props.sidebarOpen);
@@ -116,12 +114,7 @@ const Header = (props: {
                 </div>
               </form>
             </div>
-            <div
-            onClick={()=>props.setIsAEOpen(!props.isAEOpen)}
-              className="relative cursor-pointer flex w-max items-center justify-center rounded-full py-2 px-3 bg-[#71299d] text-white"
-            >
-              + Add Expense
-            </div>
+       
    {/* <!-- Notification Menu Area --> */}
    <DropdownNotification />
           </ul>
