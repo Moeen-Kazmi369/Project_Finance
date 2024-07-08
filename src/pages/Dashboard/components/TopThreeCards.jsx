@@ -94,7 +94,7 @@ const TopThreeCards = () => {
               {cards[1].value}
             </h3>
             <span className=" bg-[#d3d3d3] p-1 rounded-md">
-              <img src="/public/images/icon/icon-gray-edit.svg" />
+              <img src="/public/images/icon/icon-black-edit.svg" />
             </span>
           </div>
           <p className="text-gray-500 text-sm text-[#636363]">
@@ -159,7 +159,7 @@ const TopThreeCards = () => {
         <div className="pl-2 text-[#636363] flex flex-col gap-4">
           {cards[2].bills.map((bill, idx) => (
             <div key={idx} className="flex justify-between items-center gap-1">
-              <div className=" bg-[#c5c5c5] flex flex-col w-12 items-center px-2 py-3 rounded-md">
+              <div className=" bg-[#f3f3f3] flex flex-col w-12 items-center px-2 py-3 rounded-md">
                 <p className="">{bill.month}</p>
                 <p className="text-black font-extrabold">{bill.date}</p>
               </div>
@@ -170,7 +170,7 @@ const TopThreeCards = () => {
                   Last Charge: {bill.lastCharge}
                 </p>
               </div>
-              <div className=" bg-[#f1f0f0] rounded-md shadow p-2 px-2.5">
+              <div className=" bg-white border-[#f1f0f0] border rounded-md shadow p-2 px-2.5">
                 <p className="text-lg font-bold">{bill.amount}</p>
               </div>
             </div>

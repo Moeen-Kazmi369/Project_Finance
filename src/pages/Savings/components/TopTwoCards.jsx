@@ -75,7 +75,6 @@ const TopTwoCards = () => {
       },
     },
   };
-  
 
   const barOptions = {
     series: [
@@ -91,7 +90,7 @@ const TopTwoCards = () => {
           show: false,
         },
       },
-      colors: ['#7131a1', '#4b7fe2', '#c946f9', '#ea75f5', '#6aa0f5'],
+      colors: ['#5c93fe', '#71299d', '#d39cf3'],
       plotOptions: {
         bar: {
           distributed: true,
@@ -108,7 +107,7 @@ const TopTwoCards = () => {
         categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
         labels: {
           style: {
-            colors: ['#000'],
+            colors: ['#939393'],
             fontWeight: '600', // Semibold
           },
           offsetX: 10,
@@ -123,10 +122,10 @@ const TopTwoCards = () => {
       yaxis: {
         labels: {
           formatter: function (val) {
-            return `$${val / 1000}K`;
+            return `$${val}K`;
           },
           style: {
-            colors: ['#000'],
+            colors: ['#939393'],
             fontWeight: '600', // Semibold
           },
           offsetX: 0,
@@ -153,23 +152,40 @@ const TopTwoCards = () => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
       <div className="">
-       <div className=' grid grid-cols-10 gap-1'>
-        <div className=' bg-[#71299d] h-[80%] rounded-2xl col-span-6'>
-
-        </div>
-       <div className="bg-white col-span-4">
-          <h3 className="text-md font-medium text-[#939393]">This Month</h3>
-          <h3 className="text-lg font-extrabold text-black">87%</h3>
-          <div className='-mt-10'>
-          <ReactApexChart
-            options={areaOptions.options}
-            series={areaOptions.series}
-            type="area"
-            height={150}
-          />
+        <div className=" grid grid-cols-1 sm:grid-cols-10 gap-1">
+          <div className=" bg-[#71299d] sm:h-[80%] flex flex-col justify-between rounded-lg px-3 py-4 col-span-6">
+            <div className="flex justify-between items-center">
+              <h3 className="flex items-center gap-2">
+                <img src="/public/images/icon/icon-park-outline_protect.svg" />
+                <span className=" font-semibold text-xl text-white">
+                  $27.000
+                </span>
+              </h3>
+              <div className=" rounded-full p-1 bg-[#58197f]">
+                <img src="/public/images/icon/icon-solar_arrow-up-linear.svg" />
+              </div>
+            </div>
+            <h3 className="px-3 font-medium text-white">Total Savings</h3>
+          </div>
+          <div className="bg-white col-span-4">
+            <h3 className="text-md font-medium text-[#939393]">This Month</h3>
+            <h3 className="text-lg font-extrabold text-black">87%</h3>
+            <div className="-mt-10">
+              <ReactApexChart
+                options={areaOptions.options}
+                series={areaOptions.series}
+                type="area"
+                height={150}
+              />
+            </div>
           </div>
         </div>
-       </div>
+        <div className='flex justify-between shadow my-3 rounded-2xl items-center px-4 py-8'>
+          <h3 className=' text-black font-bold text-xl'>Annual Graphs</h3>
+          <h3 className=' text-black font-bold flex items-center flex-col text-2xl'>
+            $540 <br /> <span className=' font-medium text-xs text-[#71299d]'>Total saving</span>
+          </h3>
+        </div>
         <div className="bg-white">
           <ReactApexChart
             options={barOptions.options}
@@ -179,19 +195,21 @@ const TopTwoCards = () => {
           />
         </div>
       </div>
-      <div className="bg-white p-4 rounded-lg shadow space-y-4">
-        <h2 className="text-2xl font-semibold mb-4">My Savings</h2>
+      <div className="bg-white p-4 py-8 border border-[#e8e7e7] h-max my-6 rounded-2xl shadow space-y-4">
+        <h2 className="text-2xl font-semibold text-black mb-4">My Savings</h2>
         {progressBars.map((item, index) => (
-          <div key={index} className="flex items-center justify-between">
+         <div key={index} className='flex gap-3 items-center text-black font-semibold text-xl'>
+           <div  className="flex flex-col w-full gap-2 justify-between">
             <span>{item.label}</span>
-            <div className="flex-1 mx-2 bg-gray-200 h-2 rounded-full overflow-hidden">
-              <div
-                className="bg-purple-500 h-full"
-                style={{ width: `${item.value / 10}%` }}
-              ></div>
-            </div>
-            <span>${item.value}</span>
+            <div className="w-full bg-[#e8e7e7] h-2 rounded-full overflow-hidden">
+            <div
+              className="bg-[#71299d] h-full"
+              style={{ width: `${item.value / 10}%` }}
+            ></div>
           </div>
+          </div>
+          <span>${item.value}</span>
+         </div>
         ))}
       </div>
     </div>

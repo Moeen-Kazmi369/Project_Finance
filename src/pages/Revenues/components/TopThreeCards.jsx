@@ -22,7 +22,7 @@ const TopThreeCards = () => {
               show: false,
             },
           },
-          colors: ['#7131a1', '#4b7fe2', '#c946f9', '#ea75f5', '#6aa0f5'],
+          colors: ['#5c93fe', '#71299d', '#d39cf3'],
           plotOptions: {
             bar: {
               distributed: true,
@@ -113,7 +113,7 @@ const TopThreeCards = () => {
               colorStops: [
                 {
                   offset: 0,
-                  color: '#e8faf3',
+                  color: '#e2faf2',
                   opacity: 0.7,
                 },
                 {

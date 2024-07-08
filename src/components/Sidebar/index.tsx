@@ -89,13 +89,8 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
       }`}
     >
       {/* <!-- SIDEBAR HEADER --> */}
-      <div className="flex items-center justify-between md:justify-center gap-2 px-6 py-5.5 lg:py-6.5">
-        <NavLink to="/" className="flex items-center justify-center gap-2">
-          <img src="/images/icon/icon-Logo.svg" />
-          <h3 className=" text-2xl font-medium text-[#a1ad9a]">Logo</h3>
-        </NavLink>
-
-        <button
+      <div className=' flex justify-end px-8 mt-16'>
+      <button
           ref={trigger}
           onClick={() => setSidebarOpen(!sidebarOpen)}
           aria-controls="sidebar"
@@ -116,6 +111,16 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
             />
           </svg>
         </button>
+      </div>
+      <div className="flex items-center justify-between px-6 gap-2 py-5.5 lg:py-6.5">
+        <div className='px-4 md:mt-16'>
+          <div className='mb-3 relative'>
+          <img src='/public/images/dummy-user.png' className=' rounded-2xl'/>
+          <span className=' text-white font-bold text-xs py-1 px-2 bg-red-800 rounded-full absolute left-14 -top-2 shadow'>4</span>
+          </div>
+          <h3 className=' text-white font-extrabold text-2xl'>Samantha</h3>
+          <h4 className='text-[#656565] text-lg'>samantha@email.com</h4>
+        </div>
       </div>
       {/* <!-- SIDEBAR HEADER --> */}
 
