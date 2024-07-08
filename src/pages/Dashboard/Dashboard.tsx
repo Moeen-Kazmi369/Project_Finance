@@ -5,6 +5,7 @@ import RecentTransactions from "./components/RecentTransactions"
 import { useSidebarStore } from '../../Store Management/useSidebarStore';
 import Statistics from "./components/Statistics"
 import Header from './components/Header';
+import ExpenseBreakdown from "./components/ExpenseBreakdown"
 const Dashboard = () => {
   const { sidebarOpen, setSidebarOpen } = useSidebarStore();
   return (
@@ -19,6 +20,7 @@ const Dashboard = () => {
       </div>
       <div className=" col-span-10 md:col-span-7 h-full flex gap-3 flex-col">
         <Statistics/>
+        <ExpenseBreakdown/>
       </div>
     </div>
     </DefaultLayout>
