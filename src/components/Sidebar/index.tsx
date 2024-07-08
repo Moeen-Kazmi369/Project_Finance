@@ -66,7 +66,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
     },
     {
       title: 'Revenues',
-      link:'/reveneus'
+      link:'/revenues'
     },
     {
       title: 'Debts',

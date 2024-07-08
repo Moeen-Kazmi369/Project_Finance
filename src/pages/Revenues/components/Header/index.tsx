@@ -8,9 +8,8 @@ import DarkModeSwitcher from './DarkModeSwitcher';
 const Header = (props: {
   sidebarOpen: string | boolean | undefined;
   setSidebarOpen: (arg0: boolean) => void;
-  isAEOpen: string | boolean | undefined;
-  setIsAEOpen: (arg0: boolean) => void;
 }) => {
+  console.log(props.sidebarOpen)
   console.log(props.sidebarOpen);
   return (
     <header className="sticky top-0 z-999 flex flex-col w-full  bg-[#fbfbfb] backdrop-filter backdrop-blur-sm">
@@ -115,18 +114,9 @@ const Header = (props: {
                 </div>
               </form>
             </div>
-            <Link
-              to="/dashboard/expenses"
-              className="relative flex w-max items-center justify-center rounded-full py-2 px-3 bg-[#71299d] text-white"
-            >
-              + Add Expense
-            </Link>
-            {/* <!-- Dark Mode Toggler --> */}
-            {/* <DarkModeSwitcher /> */}
-            {/* <!-- Dark Mode Toggler --> */}
-            {/* <!-- Notification Menu Area --> */}
-            <DropdownNotification />
-            {/* <!-- Notification Menu Area --> */}
+       
+   {/* <!-- Notification Menu Area --> */}
+   <DropdownNotification />
           </ul>
         </div>
       </div>
