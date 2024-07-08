@@ -58,7 +58,7 @@ const RecentTransactions = () => {
             >
               <div className="flex items-center">
                 <img
-                  src={'/public/images/dummy-image-RT.png'}
+                  src={'/images/dummy-image-RT.png'}
                   alt="icon"
                   className="h-10 w-10 rounded-full mr-4"
                 />

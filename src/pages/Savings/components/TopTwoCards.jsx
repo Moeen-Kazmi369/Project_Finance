@@ -156,13 +156,13 @@ const TopTwoCards = () => {
           <div className=" bg-[#71299d] sm:h-[80%] flex flex-col justify-between rounded-lg px-3 py-4 col-span-6">
             <div className="flex justify-between items-center">
               <h3 className="flex items-center gap-2">
-                <img src="/public/images/icon/icon-park-outline_protect.svg" />
+                <img src="/images/icon/icon-park-outline_protect.svg" />
                 <span className=" font-semibold text-xl text-white">
                   $27.000
                 </span>
               </h3>
               <div className=" rounded-full p-1 bg-[#58197f]">
-                <img src="/public/images/icon/icon-solar_arrow-up-linear.svg" />
+                <img src="/images/icon/icon-solar_arrow-up-linear.svg" />
               </div>
             </div>
             <h3 className="px-3 font-medium text-white">Total Savings</h3>

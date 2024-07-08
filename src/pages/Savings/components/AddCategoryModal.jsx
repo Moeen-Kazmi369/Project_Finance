@@ -55,7 +55,7 @@ export default function AddCategoryModal({ isOpen, setIsOpen }) {
                     <h2 className="text-white flex items-center text-xl font-semibold">
                       New Category{' '}
                       <img
-                        src="/public/images/icon/icon-white-edit.svg"
+                        src="/images/icon/icon-white-edit.svg"
                         className="mx-1"
                       />
                     </h2>
@@ -63,7 +63,7 @@ export default function AddCategoryModal({ isOpen, setIsOpen }) {
                       onClick={() => setIsOpen(false)}
                       className="text-white"
                     >
-                      <img src="/public/images/icon/icon-cross.svg" />
+                      <img src="/images/icon/icon-cross.svg" />
                     </button>
                   </div>
 

@@ -115,7 +115,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
       <div className="flex items-center justify-between px-6 gap-2 py-5.5 lg:py-6.5">
         <div className='px-4 md:mt-16'>
           <div className='mb-3 relative'>
-          <img src='/public/images/dummy-user.png' className=' rounded-2xl'/>
+          <img src='/images/dummy-user.png' className=' rounded-2xl'/>
           <span className=' text-white font-bold text-xs py-1 px-2 bg-red-800 rounded-full absolute left-14 -top-2 shadow'>4</span>
           </div>
           <h3 className=' text-white font-extrabold text-2xl'>Samantha</h3>

@@ -7,7 +7,7 @@ const expensesData = [
     percentage: 15,
     change: 'up',
     color: '#723097',
-    icon: '/public/images/icon/icon-housing.svg',
+    icon: '/images/icon/icon-housing.svg',
   },
   {
     category: 'Food',
@@ -15,7 +15,7 @@ const expensesData = [
     percentage: 8,
     change: 'down',
     color: '#7c7c80',
-    icon: '/public/images/icon/icon-food.svg',
+    icon: '/images/icon/icon-food.svg',
   },
   {
     category: 'Transportation',
@@ -23,7 +23,7 @@ const expensesData = [
     percentage: 12,
     change: 'down',
     color: '#7c7c80',
-    icon: '/public/images/icon/icon-transportation.svg',
+    icon: '/images/icon/icon-transportation.svg',
   },
   {
     category: 'Entertainment',
@@ -31,7 +31,7 @@ const expensesData = [
     percentage: 15,
     change: 'down',
     color: '#7c7c80',
-    icon: '/public/images/icon/icon-entertainment.svg',
+    icon: '/images/icon/icon-entertainment.svg',
   },
   {
     category: 'Shopping',
@@ -39,7 +39,7 @@ const expensesData = [
     percentage: 25,
     change: 'up',
     color: '#7c7c80',
-    icon: '/public/images/icon/icon-shopping.svg',
+    icon: '/images/icon/icon-shopping.svg',
   },
   {
     category: 'Others',
@@ -47,7 +47,7 @@ const expensesData = [
     percentage: 23,
     change: 'up',
     color: '#7c7c80',
-    icon: '/public/images/icon/icon-others.svg',
+    icon: '/images/icon/icon-others.svg',
   },
 ];
 

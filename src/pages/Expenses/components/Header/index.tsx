@@ -64,7 +64,7 @@ const Header = (props: {
 
         <div className="hidden w-max lg:block">
           <h3 className="text-sm font-semibold flex items-center text-[#656565]">
-            <img src="/public/images/icon/icon-sun.svg" className="mx-2" />{' '}
+            <img src="/images/icon/icon-sun.svg" className="mx-2" />{' '}
             <span>Good Morning</span>
           </h3>
           <h3 className="ml-4 text-lg font-bold  text-[#251147]">

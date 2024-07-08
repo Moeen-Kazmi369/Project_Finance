@@ -55,7 +55,7 @@ const DropdownUser = () => {
         </span> */}
 
        
-       <span className=' p-1.5 py-2 border border-[#71299d] rounded-lg'> <img src='/public/images/icon/icon-purple-down.svg'/></span>
+       <span className=' p-1.5 py-2 border border-[#71299d] rounded-lg'> <img src='/images/icon/icon-purple-down.svg'/></span>
       </Link>
 
       {/* <!-- Dropdown Start --> */}

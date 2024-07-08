@@ -50,7 +50,7 @@ const DropdownNotification = () => {
           }`}
         >
         </span>
-        <img src="/public/images/icon/icon-notification.svg"/>
+        <img src="/images/icon/icon-notification.svg"/>
       </Link>
 
       <div

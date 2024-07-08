@@ -201,7 +201,7 @@ const TopThreeCards = () => {
         </div>
         <div className="flex flex-col gap-3 mb-6">
           <div className="pl-2">
-            <img src="/public/images/revenues-card2-image.png" />
+            <img src="/images/revenues-card2-image.png" />
           </div>
           <div className="mt-3 px-2">
             <div className="h-2 rounded bg-[#e0e0e0]">

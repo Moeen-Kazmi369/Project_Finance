@@ -11,7 +11,7 @@ const TopThreeCards = () => {
         type: 'Credit Card',
         number: '**** **** **** 2598',
         balance: '$25000',
-        icon: '/public/images/brand/mastercard.png',
+        icon: '/images/brand/mastercard.png',
       },
     },
     {
@@ -78,7 +78,7 @@ const TopThreeCards = () => {
                 <p className="text-lg font-bold ml-4">
                   {cards[0].account.balance}
                 </p>
-                <img src="/public/images/icon/icon-titled-arrow.svg" />
+                <img src="/images/icon/icon-titled-arrow.svg" />
               </div>
             </div>
           </div>
@@ -94,7 +94,7 @@ const TopThreeCards = () => {
               {cards[1].value}
             </h3>
             <span className=" bg-[#d3d3d3] p-1 rounded-md">
-              <img src="/public/images/icon/icon-black-edit.svg" />
+              <img src="/images/icon/icon-black-edit.svg" />
             </span>
           </div>
           <p className="text-gray-500 text-sm text-[#636363]">
@@ -105,7 +105,7 @@ const TopThreeCards = () => {
           <div className="flex sm:min-w-max sm:flex-col gap-3">
             <div className="">
               <div className=" flex items-center gap-2">
-                <img src="/public/images/icon/icon-gray-award.svg" />
+                <img src="/images/icon/icon-gray-award.svg" />
                 <p className="text-[#636363]">Target Achieved</p>
               </div>
               <p className="text-md ml-4 text-black font-extrabold">
@@ -114,7 +114,7 @@ const TopThreeCards = () => {
             </div>
             <div className="">
               <div className=" flex items-center gap-2">
-                <img src="/public/images/icon/icon-gray-target.svg" />
+                <img src="/images/icon/icon-gray-target.svg" />
                 <p className="text-[#636363]">This month Target</p>
               </div>
               <p className="text-md ml-4 text-black font-extrabold">

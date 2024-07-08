@@ -57,7 +57,7 @@ const DropdownMessage = () => {
         >
         </span>
 
-        <img src="/public/images/icon/icon--sidebar-chart.svg"/>
+        <img src="/images/icon/icon--sidebar-chart.svg"/>
       </Link>
 
       {/* <!-- Dropdown Start --> */}

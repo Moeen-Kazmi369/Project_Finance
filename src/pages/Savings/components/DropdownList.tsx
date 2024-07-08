@@ -46,7 +46,7 @@ const DropdownList = ({dropDownoptions,type}) => {
             <h3 className="font-medium text-[#acacad]">
            {selectedOption || type}
             </h3>
-        <img className={`${dropdownOpen ? "rotate-180":null} transition-all duration-200 ease-in-out`} src='/public/images/icon/icon-gray-arrow.svg'/>
+        <img className={`${dropdownOpen ? "rotate-180":null} transition-all duration-200 ease-in-out`} src='/images/icon/icon-gray-arrow.svg'/>
       </Link>
 
       {/* <!-- Dropdown Start --> */}

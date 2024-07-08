@@ -68,8 +68,8 @@ const ClassificationTable = ({ isOpen, setIsOpen }) => {
                   {item.monthly}
                 </td>
                 <td className="py-5 flex gap-2 font-semibold text-[#a4a4a4] px-4">
-                  <img src="/public/images/icon/icon-gray-edit.svg" />
-                  <img src="/public/images/icon/icon-gray-delete.svg" />
+                  <img src="/images/icon/icon-gray-edit.svg" />
+                  <img src="/images/icon/icon-gray-delete.svg" />
                 </td>
               </tr>
             ))}
