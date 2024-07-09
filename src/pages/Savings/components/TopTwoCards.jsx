@@ -167,7 +167,7 @@ const TopTwoCards = () => {
             </div>
             <h3 className="px-3 font-medium text-white">Total Savings</h3>
           </div>
-          <div className="bg-white col-span-4">
+          <div className="bg-white px-3 sm:px-0 border col-span-4">
             <h3 className="text-md font-medium text-[#939393]">This Month</h3>
             <h3 className="text-lg font-extrabold text-black">87%</h3>
             <div className="-mt-10">
