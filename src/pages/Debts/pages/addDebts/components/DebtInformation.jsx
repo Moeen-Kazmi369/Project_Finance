@@ -3,7 +3,7 @@ import React from 'react';
 const DebtInformation = () => {
   return (
     <div className="mt-4">
-      <h1 className="text-lg font-medium text-black">Debts Information</h1>
+      <h1 className="text-2xl font-semibold text-black">Debts Information</h1>
       <div className=" md:text-base text-sm gap-6 mt-6 flex flex-col justify-between">
         <div className="flex w-[100%] gap-5">
           <div className="flex flex-col gap-2 w-[100%]">

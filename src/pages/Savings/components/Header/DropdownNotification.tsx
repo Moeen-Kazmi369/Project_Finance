@@ -102,9 +102,9 @@ const DropdownNotification = () => {
             </li>
           ))}
         </ul>
-          <Link
+           <Link
             className="block text-center rounded-b-lg py-3 text-sm font-medium bg-[#e4f0f2] text-[#000] hover:bg-gray-100"
-            to="#"
+            to="/notifications"
           >
             View All
           </Link>

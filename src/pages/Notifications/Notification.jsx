@@ -1,7 +1,8 @@
 import React from 'react';
 import DefaultLayout from '../../layout/DefaultLayout';
 import { MdLockOutline } from 'react-icons/md';
-
+import { useSidebarStore } from '../../Store Management/useSidebarStore';
+import Header from './components/Header';
 const data = [
   {
     id: 0,
@@ -40,8 +41,12 @@ const data = [
   },
 ];
 const Notification = () => {
+  const { sidebarOpen, setSidebarOpen } = useSidebarStore();
   return (
     <DefaultLayout>
+      {/* <!-- ===== Header Start ===== --> */}
+      <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
+      {/* <!-- ===== Header End ===== --> */}
       <div className="flex flex-col gap-5">
         {data.map((item, index) => (
           <div
@@ -54,10 +59,10 @@ const Notification = () => {
               </div>
               <div>
                 <div className="text-black font-bold">{item.name}</div>
-                <div>{item.desc}</div>
+                <div className='text-[#868686]'>{item.desc}</div>
               </div>
             </div>
-            <div>{item.time}</div>
+            <div className='text-[#868686]'>{item.time}</div>
           </div>
         ))}
       </div>

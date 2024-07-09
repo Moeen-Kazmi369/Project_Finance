@@ -90,9 +90,9 @@ const Statistics = () => {
   };
 
   return (
-    <div className="w-full text-[#7c7c80]">
+    <div className="w-full mt-8 text-[#7c7c80]">
       <div>
-        <h2 className="text-2xl mb-2">Total Net Worth</h2>
+        <h2 className="text-xl mb-2">Total Net Worth</h2>
         <h2 className="text-2xl mb-4 text-black font-semibold">$728,510</h2>
       </div>
       <div className="bg-white rounded-lg shadow sm:p-4">
@@ -101,7 +101,7 @@ const Statistics = () => {
             dropDownoptions={['Weekly Comparison', 'Monthly Comparison']}
             type={'Weekly Comparison'}
           />
-          <div className="flex self-end items-center gap-3">
+          <div className="flex self-end flex-wrap items-center gap-3">
             <div className="flex items-center gap-2">
               <span className="w-4 rounded-sm h-2 bg-[#723097]"></span>
               <h3 className=" font-bold">Live</h3>

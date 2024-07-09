@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import DropdownMessage from './DropdownMessage';
 import DropdownNotification from './DropdownNotification';
 import DropdownUser from './DropdownUser';
@@ -8,9 +8,8 @@ import DarkModeSwitcher from './DarkModeSwitcher';
 const Header = (props: {
   sidebarOpen: string | boolean | undefined;
   setSidebarOpen: (arg0: boolean) => void;
-  isAEOpen: string | boolean | undefined;
-  setIsAEOpen: (arg0: boolean) => void;
 }) => {
+  const navigate=useNavigate()
   console.log(props.sidebarOpen);
   return (
     <header className="sticky top-0 z-999 flex flex-col w-full  bg-[#fbfbfb] backdrop-filter backdrop-blur-sm">
@@ -65,13 +64,10 @@ const Header = (props: {
         </div>
 
         <div className="hidden w-max lg:block">
-          <h3 className="text-sm font-semibold flex items-center text-[#656565]">
-            <img src="/images/icon/icon-sun.svg" className="mx-2" />{' '}
-            <span>Good Morning</span>
-          </h3>
-          <h3 className="ml-4 text-lg font-bold  text-[#251147]">
-            Carmeron Williamson
-          </h3>
+         <h3 onClick={()=>navigate(-1)} className='font-semibold flex items-center gap-2 cursor-pointer text-black text-2xl'>
+          <img src='/images/icon/icon-back.svg'/>
+         Back
+         </h3>
         </div>
 
         <div className="flex items-center gap-3 2xsm:gap-7">
@@ -114,12 +110,6 @@ const Header = (props: {
                   />
                 </div>
               </form>
-            </div>
-            <div
-            onClick={()=>props.setIsAEOpen(!props.isAEOpen)}
-              className="relative flex w-max items-center cursor-pointer justify-center rounded-full py-2 px-3 bg-[#71299d] text-white"
-            >
-              + Add Expense
             </div>
             {/* <!-- Dark Mode Toggler --> */}
             {/* <DarkModeSwitcher /> */}

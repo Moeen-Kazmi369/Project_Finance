@@ -6,13 +6,12 @@ import PageTitle from './components/PageTitle';
 import Dashboard from './pages/Dashboard/Dashboard';
 import Expenses from './pages/Expenses/Expenses';
 import Revenues from './pages/Revenues/Revenues';
-import Savings from "./pages/Savings/Savings"
-import Profile from "./pages/Profile/Profile"
 import Savings from './pages/Savings/Savings';
 import TotalNetworth from './pages/TotalNetworth/TotalNetworth';
 import Notifications from './pages/Notifications/Notification';
 import Profile from './pages/Profile/Profile';
-import AddDebts from './pages/Debts/AddDebts';
+import Debts from "./pages/Debts/Debts"
+import AddDebts from './pages/Debts/pages/addDebts/AddDebts';
 
 function App() {
   const [loading, setLoading] = useState<boolean>(true);
@@ -59,9 +58,18 @@ function App() {
           path="/revenues"
           element={
             <>
-              <PageTitle title="Finacne | Revenues" />
               <PageTitle title="Finance | Revenues" />
               <Revenues />
+            </>
+          }
+        />
+        {/* Debts */}
+        <Route
+          path="/debts"
+          element={
+            <>
+              <PageTitle title="Finance | Debts" />
+              <Debts />
             </>
           }
         />
@@ -70,22 +78,12 @@ function App() {
           path="/savings"
           element={
             <>
-              <PageTitle title="Finacne | Savings" />
               <PageTitle title="Finance | Savings" />
               <Savings />
             </>
           }
         />
         {/* Profile */}
-        <Route
-          path="/total_net_worth"
-          element={
-            <>
-              <PageTitle title="Finance | Total Net Worth" />
-              <TotalNetworth />
-            </>
-          }
-        />
         <Route
           path="/total_net_worth"
           element={
@@ -108,7 +106,6 @@ function App() {
           path="/profile"
           element={
             <>
-              <PageTitle title="Finacne | Profile" />
               <PageTitle title="Finance | Profile" />
               <Profile />
             </>

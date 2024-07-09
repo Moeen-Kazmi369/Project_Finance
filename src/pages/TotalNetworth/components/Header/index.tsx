@@ -115,12 +115,6 @@ const Header = (props: {
                 </div>
               </form>
             </div>
-            <Link
-              to="/dashboard/expenses"
-              className="relative flex w-max items-center justify-center rounded-full py-2 px-3 bg-[#71299d] text-white"
-            >
-              + Add Expense
-            </Link>
             {/* <!-- Dark Mode Toggler --> */}
             {/* <DarkModeSwitcher /> */}
             {/* <!-- Dark Mode Toggler --> */}

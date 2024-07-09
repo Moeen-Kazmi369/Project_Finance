@@ -35,7 +35,7 @@ const DonutChart = () => {
   };
   return (
     <div className="w-full mt-4 text-[#acacad]">
-      <div className="  sm:p-4">
+      <div className="flex justify-center  sm:p-4">
         <Chart
           options={chartOptions.options}
           series={chartOptions.series}

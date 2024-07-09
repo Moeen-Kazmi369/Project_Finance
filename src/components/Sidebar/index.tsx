@@ -135,7 +135,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
              <li key={idx}>
               <NavLink
                 to={item.link}
-                className={`group ${pathname===item.link ? "text-[#bb8ad8]":"text-[#656565]"} relative flex items-center rounded-sm py-2 px-4 text-xl font-semibold duration-300 ease-in-out `}
+                className={`group ${pathname===item.link ? "text-[#bb8ad8]":"text-[#656565]"} relative flex items-center rounded-sm py-2 pl-4 text-xl font-semibold duration-300 ease-in-out `}
               >
                 {pathname===item.link && <span className="h-2 w-2 mx-2 bg-[#bb8ad8] rounded-full"></span>}
                 {item.title}

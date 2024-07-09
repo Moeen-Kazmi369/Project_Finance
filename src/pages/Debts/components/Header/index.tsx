@@ -8,8 +8,6 @@ import DarkModeSwitcher from './DarkModeSwitcher';
 const Header = (props: {
   sidebarOpen: string | boolean | undefined;
   setSidebarOpen: (arg0: boolean) => void;
-  isAEOpen: string | boolean | undefined;
-  setIsAEOpen: (arg0: boolean) => void;
 }) => {
   console.log(props.sidebarOpen);
   return (
@@ -115,12 +113,12 @@ const Header = (props: {
                 </div>
               </form>
             </div>
-            <div
-            onClick={()=>props.setIsAEOpen(!props.isAEOpen)}
+            <Link
+            to={'/add-debts'}
               className="relative flex w-max items-center cursor-pointer justify-center rounded-full py-2 px-3 bg-[#71299d] text-white"
             >
-              + Add Expense
-            </div>
+              + Add New Debts
+            </Link>
             {/* <!-- Dark Mode Toggler --> */}
             {/* <DarkModeSwitcher /> */}
             {/* <!-- Dark Mode Toggler --> */}
