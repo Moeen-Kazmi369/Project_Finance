@@ -1,6 +1,30 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 
+const notifications = [
+  {
+    id: 1,
+    name: 'John Doe',
+    message: 'John Doe has accepted your bid of $25 on their project for the web application',
+    time: '1 day',
+    img: 'https://via.placeholder.com/50',
+  },
+  {
+    id: 2,
+    name: 'Hannah Smith',
+    message: 'Hannah Smith has declined your bid of $15 hourly rate for the mobile app',
+    time: '1 day',
+    img: 'https://via.placeholder.com/50',
+  },
+  {
+    id: 3,
+    name: 'Jack Howard',
+    message: 'Jack Howard viewed your bid of $30 on their project',
+    time: '2 day',
+    img: 'https://via.placeholder.com/50',
+  },
+];
+
 const DropdownNotification = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [notifying, setNotifying] = useState(true);
@@ -23,7 +47,6 @@ const DropdownNotification = () => {
     return () => document.removeEventListener('click', clickHandler);
   });
 
-  // close if the esc key is pressed
   useEffect(() => {
     const keyHandler = ({ keyCode }: KeyboardEvent) => {
       if (!dropdownOpen || keyCode !== 27) return;
@@ -50,86 +73,41 @@ const DropdownNotification = () => {
           }`}
         >
         </span>
-        <img src="/images/icon/icon-notification.svg"/>
+        <img src="/images/icon/icon-notification.svg" alt="Notification Icon" />
       </Link>
 
       <div
         ref={dropdown}
         onFocus={() => setDropdownOpen(true)}
         onBlur={() => setDropdownOpen(false)}
-        className={`absolute -right-27 mt-2.5 flex h-90 w-75 flex-col rounded-sm  shadow-default bg-white sm:right-0 sm:w-80 ${
+        className={`absolute right-0 mt-2.5 flex w-75 flex-col rounded-lg shadow-lg bg-white sm:right-0 sm:w-90 ${
           dropdownOpen === true ? 'block' : 'hidden'
         }`}
       >
         <div className="px-4.5 py-3">
-          <h5 className="text-sm font-medium text-[#757575]">Notification</h5>
+          <h5 className="text-xl font-semibold uppercase text-[#545454]">Notifications</h5>
         </div>
 
-        <ul className="flex h-auto flex-col overflow-y-auto">
-          <li>
-            <Link
-              className="flex flex-col gap-2.5 border-t px-4.5 py-3  border-strokedark hover:bg-meta-4"
-              to="#"
-            >
-              <p className="text-sm">
-                <span className=" text-[#757575]">
-                  Edit your information in a swipe
-                </span>{' '}
-                Sint occaecat cupidatat non proident, sunt in culpa qui officia
-                deserunt mollit anim.
-              </p>
-
-              <p className="text-xs">12 May, 2025</p>
-            </Link>
-          </li>
-          <li>
-            <Link
-              className="flex flex-col gap-2.5 border-t px-4.5 py-3  border-strokedark hover:bg-meta-4"
-              to="#"
-            >
-              <p className="text-sm">
-                <span className=" text-[#757575]">
-                  It is a long established fact
-                </span>{' '}
-                that a reader will be distracted by the readable.
-              </p>
-
-              <p className="text-xs">24 Feb, 2025</p>
-            </Link>
-          </li>
-          <li>
-            <Link
-              className="flex flex-col gap-2.5 border-t px-4.5 py-3  border-strokedark hover:bg-meta-4"
-              to="#"
-            >
-              <p className="text-sm">
-                <span className=" text-[#757575]">
-                  There are many variations
-                </span>{' '}
-                of passages of Lorem Ipsum available, but the majority have
-                suffered
-              </p>
-
-              <p className="text-xs">04 Jan, 2025</p>
-            </Link>
-          </li>
-          <li>
-            <Link
-              className="flex flex-col gap-2.5 border-t px-4.5 py-3  border-strokedark hover:bg-meta-4"
-              to="#"
-            >
-              <p className="text-sm">
-                <span className=" text-[#757575]">
-                  There are many variations
-                </span>{' '}
-                of passages of Lorem Ipsum available, but the majority have
-                suffered
-              </p>
-
-              <p className="text-xs">01 Dec, 2024</p>
-            </Link>
-          </li>
+        <ul className="flex h-auto flex-col overflow-y-auto max-h-64">
+          {notifications.map((notification) => (
+            <li key={notification.id} className="border-t border-[#c5c4c4] hover:bg-gray-100">
+              <Link className="flex items-center gap-4 px-4.5 py-3" to="#">
+                <img className="w-12 h-12 rounded-full" src={notification.img} alt={notification.name} />
+                <div className="flex-1">
+                  <p className="text-sm font-medium text-black">{notification.name}</p>
+                  <p className="text-sm text-[#757575]">{notification.message}</p>
+                </div>
+                <p className="text-xs text-[#565555]">{notification.time}</p>
+              </Link>
+            </li>
+          ))}
         </ul>
+          <Link
+            className="block text-center rounded-b-lg py-3 text-sm font-medium bg-[#e4f0f2] text-[#000] hover:bg-gray-100"
+            to="#"
+          >
+            View All
+          </Link>
       </div>
     </li>
   );
