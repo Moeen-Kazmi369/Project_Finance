@@ -7,6 +7,7 @@ import Dashboard from './pages/Dashboard/Dashboard';
 import Expenses from './pages/Expenses/Expenses';
 import Revenues from './pages/Revenues/Revenues';
 import Savings from "./pages/Savings/Savings"
+import Profile from "./pages/Profile/Profile"
 function App() {
   const [loading, setLoading] = useState<boolean>(true);
   const { pathname } = useLocation();
@@ -64,6 +65,16 @@ function App() {
             <>
               <PageTitle title="Finacne | Savings" />
               <Savings />
+            </>
+          }
+        />
+        {/* Profile */}
+        <Route
+          path="/profile"
+          element={
+            <>
+              <PageTitle title="Finacne | Profile" />
+              <Profile />
             </>
           }
         />

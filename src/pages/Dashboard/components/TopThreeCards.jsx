@@ -1,5 +1,8 @@
 import React from 'react';
 import GaugeChart from 'react-gauge-chart';
+import Slider from 'react-slick';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const TopThreeCards = () => {
   const cards = [
@@ -7,15 +10,29 @@ const TopThreeCards = () => {
       title: 'Total Balance',
       value: '$240,399',
       subTitle: 'All Accounts',
-      account: {
-        type: 'Credit Card',
-        number: '**** **** **** 2598',
-        balance: '$25000',
-        icon: '/images/brand/mastercard.png',
-      },
+      accounts: [
+        {
+          type: 'Credit Card',
+          number: '**** **** **** 2598',
+          balance: '$25000',
+          icon: '/images/brand/mastercard.png',
+        },
+        {
+          type: 'MasterCard',
+          number: '**** **** **** 1234',
+          balance: '$50000',
+          icon: '/images/brand/mastercard.png',
+        },
+        {
+          type: 'Visa Card',
+          number: '**** **** **** 5678',
+          balance: '$150000',
+          icon: '/images/brand/mastercard.png',
+        },
+      ],
     },
     {
-      title: ' Goals',
+      title: 'Goals',
       value: '$20,000',
       subTitle: 'May, 2023',
       targetAchieved: '$12,500',
@@ -46,6 +63,14 @@ const TopThreeCards = () => {
     },
   ];
 
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
+
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3 mt-8">
       {/* Total Balance Card */}
@@ -59,30 +84,30 @@ const TopThreeCards = () => {
             {cards[0].subTitle}
           </p>
         </div>
-        <div className="pl-2">
-          <div className="flex items-center bg-[#71299d] text-white p-4 rounded-md">
-            <div className="flex-grow">
-              <p className="text-sm text-[#ecebeb]">Account Type</p>
-              <p className="text-lg font-extrabold">{cards[0].account.type}</p>
-              <p className="text-sm text-[#ecebeb]">
-                {cards[0].account.number}
-              </p>
-            </div>
-            <div className=" flex flex-col items-end">
-              <img
-                src={cards[0].account.icon}
-                alt="Credit Card"
-                className="h-8 w-max"
-              />
-              <div className="flex gap-2">
-                <p className="text-lg font-bold ml-4">
-                  {cards[0].account.balance}
-                </p>
-                <img src="/images/icon/icon-titled-arrow.svg" />
+        <Slider {...settings}>
+          {cards[0].accounts.map((account, index) => (
+            <div key={index} className="pl-2">
+              <div className="flex items-center bg-[#71299d] text-white p-4 rounded-md">
+                <div className="flex-grow">
+                  <p className="text-sm text-[#ecebeb]">Account Type</p>
+                  <p className="text-lg font-extrabold">{account.type}</p>
+                  <p className="text-sm text-[#ecebeb]">{account.number}</p>
+                </div>
+                <div className="flex flex-col items-end">
+                  <img
+                    src={account.icon}
+                    alt="Credit Card"
+                    className="h-8 w-max"
+                  />
+                  <div className="flex gap-2">
+                    <p className="text-lg font-bold ml-4">{account.balance}</p>
+                    <img src="/images/icon/icon-titled-arrow.svg" />
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
+          ))}
+        </Slider>
       </div>
 
       {/* Goals Card */}
@@ -93,7 +118,7 @@ const TopThreeCards = () => {
             <h3 className="text-xl font-extrabold text-black">
               {cards[1].value}
             </h3>
-            <span className=" bg-[#d3d3d3] p-1 rounded-md">
+            <span className="bg-[#d3d3d3] p-1 rounded-md">
               <img src="/images/icon/icon-black-edit.svg" />
             </span>
           </div>
@@ -104,7 +129,7 @@ const TopThreeCards = () => {
         <div className="pl-2 flex flex-col sm:flex-row gap-2">
           <div className="flex sm:min-w-max sm:flex-col gap-3">
             <div className="">
-              <div className=" flex items-center gap-2">
+              <div className="flex items-center gap-2">
                 <img src="/images/icon/icon-gray-award.svg" />
                 <p className="text-[#636363]">Target Achieved</p>
               </div>
@@ -113,7 +138,7 @@ const TopThreeCards = () => {
               </p>
             </div>
             <div className="">
-              <div className=" flex items-center gap-2">
+              <div className="flex items-center gap-2">
                 <img src="/images/icon/icon-gray-target.svg" />
                 <p className="text-[#636363]">This month Target</p>
               </div>
@@ -130,25 +155,19 @@ const TopThreeCards = () => {
               colors={['#71299d']}
               needleColor="#71299d"
               hideText={true}
-              style={
-                {
-                  // width:"100px"
-                }
-              }
+              style={{
+                width:"120px"
+              }}
               className="w-[120px]"
             />
-            <div className=' -mt-2 gap-3 flex justify-between items-center'>
-              <p className="text-center text-xs text-[#939393] font-bold">
-                $0k
-              </p>
-              <p className="text-center text-md font-bold">
-                {cards[1].progress}
-              </p>
-              <p className="text-center text-xs text-[#939393] font-bold">
-                ${cards[1].progress}
-              </p>
+            <div className=" -mt-2 gap-3 flex justify-between items-center">
+              <p className="text-center text-xs text-[#939393] font-bold">$0k</p>
+              <p className="text-center text-md font-bold">{cards[1].progress}</p>
+              <p className="text-center text-xs text-[#939393] font-bold">${cards[1].progress}</p>
             </div>
-            <p className="text-center text-xs text-black font-semibold">Target vs Achievement</p>
+            <p className="text-center text-xs text-black font-semibold">
+              Target vs Achievement
+            </p>
           </div>
         </div>
       </div>
@@ -159,18 +178,18 @@ const TopThreeCards = () => {
         <div className="pl-2 text-[#636363] flex flex-col gap-4">
           {cards[2].bills.map((bill, idx) => (
             <div key={idx} className="flex justify-between items-center gap-1">
-              <div className=" bg-[#f3f3f3] flex flex-col w-12 items-center px-2 py-3 rounded-md">
-                <p className="">{bill.month}</p>
+              <div className="bg-[#f3f3f3] flex flex-col w-12 items-center px-2 py-3 rounded-md">
+                <p>{bill.month}</p>
                 <p className="text-black font-extrabold">{bill.date}</p>
               </div>
               <div>
                 <p>{bill.name}</p>
-                <p className=" font-extrabold">{bill.description}</p>
+                <p className="font-extrabold">{bill.description}</p>
                 <p className="text-gray-500 text-sm">
                   Last Charge: {bill.lastCharge}
                 </p>
               </div>
-              <div className=" bg-white border-[#f1f0f0] border rounded-md shadow p-2 px-2.5">
+              <div className="bg-white border-[#f1f0f0] border rounded-md shadow p-2 px-2.5">
                 <p className="text-lg font-bold">{bill.amount}</p>
               </div>
             </div>
