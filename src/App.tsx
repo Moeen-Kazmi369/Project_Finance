@@ -8,6 +8,12 @@ import Expenses from './pages/Expenses/Expenses';
 import Revenues from './pages/Revenues/Revenues';
 import Savings from "./pages/Savings/Savings"
 import Profile from "./pages/Profile/Profile"
+import Savings from './pages/Savings/Savings';
+import TotalNetworth from './pages/TotalNetworth/TotalNetworth';
+import Notifications from './pages/Notifications/Notification';
+import Profile from './pages/Profile/Profile';
+import AddDebts from './pages/Debts/AddDebts';
+
 function App() {
   const [loading, setLoading] = useState<boolean>(true);
   const { pathname } = useLocation();
@@ -54,6 +60,7 @@ function App() {
           element={
             <>
               <PageTitle title="Finacne | Revenues" />
+              <PageTitle title="Finance | Revenues" />
               <Revenues />
             </>
           }
@@ -64,11 +71,39 @@ function App() {
           element={
             <>
               <PageTitle title="Finacne | Savings" />
+              <PageTitle title="Finance | Savings" />
               <Savings />
             </>
           }
         />
         {/* Profile */}
+        <Route
+          path="/total_net_worth"
+          element={
+            <>
+              <PageTitle title="Finance | Total Net Worth" />
+              <TotalNetworth />
+            </>
+          }
+        />
+        <Route
+          path="/total_net_worth"
+          element={
+            <>
+              <PageTitle title="Finance | Total Net Worth" />
+              <TotalNetworth />
+            </>
+          }
+        />
+        <Route
+          path="/notifications"
+          element={
+            <>
+              <PageTitle title="Finance | Notifications" />
+              <Notifications />
+            </>
+          }
+        />
         <Route
           path="/profile"
           element={
