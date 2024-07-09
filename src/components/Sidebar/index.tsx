@@ -118,7 +118,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
           <img src='/images/dummy-user.png' className=' rounded-2xl'/>
           <span className=' text-white font-bold text-xs py-1 px-2 bg-red-800 rounded-full absolute left-14 -top-2 shadow'>4</span>
           </div>
-          <h3 className=' text-white font-extrabold flex items-center gap-2 text-2xl'>Samantha <img onClick={()=>navigate('/profile')} src='/public/images/icon/icon-white-edit.svg'/></h3>
+          <h3 className=' text-white font-extrabold flex items-center gap-2 text-2xl'>Samantha <img onClick={()=>navigate('/profile')} src='/images/icon/icon-white-edit.svg'/></h3>
           <h4 className='text-[#656565] text-lg'>samantha@email.com</h4>
         </div>
       </div>

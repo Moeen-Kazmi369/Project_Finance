@@ -1,17 +1,17 @@
 import React from 'react';
 import ReactApexChart from 'react-apexcharts';
-import DropdownList from '../../TotalNetworth/components/DropdownList';
+import DropdownList from './DropdownList';
 
 const Statistics = () => {
   const options = {
     series: [
       {
-        name: 'This week',
-        data: [160, 50, 80, 120, 180, 200, 150],
+        name: 'one week',
+        data: [100, 60, 90, 110, 140, 190, 130, 100, 55, 79, 110, 65],
       },
       {
-        name: 'Last week',
-        data: [100, 60, 90, 110, 140, 190, 130],
+        name: 'one month',
+        data: [100, 60, 90, 110, 140, 190, 130, 100, 55, 79, 110, 65],
       },
     ],
     options: {
@@ -37,7 +37,20 @@ const Statistics = () => {
         colors: ['transparent'],
       },
       xaxis: {
-        categories: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+        categories: [
+          'Jan',
+          'Feb',
+          'Mar',
+          'Apr',
+          'May',
+          'Jun',
+          'Jul',
+          'Aug',
+          'Sep',
+          'Oct',
+          'Nov',
+          'Dec',
+        ],
         labels: {
           style: {
             colors: ['#7c7c80'],
@@ -78,7 +91,10 @@ const Statistics = () => {
 
   return (
     <div className="w-full text-[#7c7c80]">
-      <h2 className="text-2xl mb-4">Statistics</h2>
+      <div>
+        <h2 className="text-2xl mb-2">Total Net Worth</h2>
+        <h2 className="text-2xl mb-4 text-black font-semibold">$728,510</h2>
+      </div>
       <div className="bg-white rounded-lg shadow sm:p-4">
         <div className="flex flex-col sm:flex-row justify-between sm:items-center">
           <DropdownList
@@ -88,11 +104,23 @@ const Statistics = () => {
           <div className="flex self-end items-center gap-3">
             <div className="flex items-center gap-2">
               <span className="w-4 rounded-sm h-2 bg-[#723097]"></span>
-              <h3 className=" font-bold">This week</h3>
+              <h3 className=" font-bold">Live</h3>
             </div>
             <div className="flex items-center gap-2">
               <span className="w-4 rounded-sm h-2 bg-[#e8e8e8]"></span>
-              <h3 className=" font-bold">Last week</h3>
+              <h3 className=" font-bold">One week</h3>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="w-4 rounded-sm h-2 bg-[#e8e8e8]"></span>
+              <h3 className=" font-bold">One Month</h3>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="w-4 rounded-sm h-2 bg-[#e8e8e8]"></span>
+              <h3 className=" font-bold">One Year</h3>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="w-4 rounded-sm h-2 bg-[#e8e8e8]"></span>
+              <h3 className=" font-bold">All</h3>
             </div>
           </div>
         </div>

@@ -32,11 +32,11 @@ export default function ProfileForm() {
           <div className="relative">
             <img
               className="w-24 h-24 rounded-full"
-              src="/public/images/dummy-user.png"
+              src="/images/dummy-user.png"
               alt="Profile"
             />
             <div className="absolute bottom-0 left-0 top-0 flex justify-center items-center right-0 bg-black/40 rounded-full p-2 shadow-lg">
-              <img src='/public/images/icon/icon-white-camera.svg'/>
+              <img src='/images/icon/icon-white-camera.svg'/>
             </div>
           </div>
         </div>

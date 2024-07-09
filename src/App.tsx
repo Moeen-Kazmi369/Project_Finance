@@ -74,7 +74,17 @@ function App() {
           element={
             <>
               <PageTitle title="Finacne | Profile" />
+              <PageTitle title="Finance | Profile" />
               <Profile />
+            </>
+          }
+        />
+        <Route
+          path="/add-debts"
+          element={
+            <>
+              <PageTitle title="Finance | Add Debts" />
+              <AddDebts />
             </>
           }
         />
