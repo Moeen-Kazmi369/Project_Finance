@@ -152,7 +152,7 @@ const TopTwoCards = () => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
       <div className="">
-        <div className=" grid grid-cols-1 sm:grid-cols-10 gap-1">
+        <div className=" grid grid-cols-1 sm:grid-cols-10 gap-3 sm:gap-1">
           <div className=" bg-[#71299d] sm:h-[80%] flex flex-col justify-between rounded-lg px-3 py-4 col-span-6">
             <div className="flex justify-between items-center">
               <h3 className="flex items-center gap-2">
@@ -167,7 +167,7 @@ const TopTwoCards = () => {
             </div>
             <h3 className="px-3 font-medium text-white">Total Savings</h3>
           </div>
-          <div className="bg-white px-3 sm:px-0 border col-span-4">
+          <div className="bg-white px-3 sm:px-0 col-span-4">
             <h3 className="text-md font-medium text-[#939393]">This Month</h3>
             <h3 className="text-lg font-extrabold text-black">87%</h3>
             <div className="-mt-10">

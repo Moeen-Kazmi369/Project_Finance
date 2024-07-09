@@ -17,16 +17,48 @@ const DonutChart = () => {
         width: 0,
       },
       colors: ['#fe9a21', '#fd8d8c', '#373b74', '#c0d0fa', '#fe9190'],
+      responsive: [
+        {
+          breakpoint: 480,
+          options: {
+            chart: {
+              width: 200,
+            },
+            legend: {
+              position: 'bottom',
+            },
+          },
+        },
+      ],
       plotOptions: {
         pie: {
           donut: {
             labels: {
               show: true,
-              fontFamily: 'Arial',
-              color: '#373b74',
-              offsetY: 10,
-              formatter: function () {
-                return '$450';
+              name: {
+                show: true,
+                fontSize: '22px',
+                fontFamily: 'Arial',
+                color: '#373b74',
+                offsetY: -10,
+              },
+              value: {
+                show: true,
+                fontSize: '16px',
+                fontFamily: 'Arial',
+                color: '#373b74',
+                offsetY: 10,
+                formatter: function () {
+                  return '$450';
+                },
+              },
+              total: {
+                show: true,
+                showAlways: true,
+                label: '$450',
+                fontSize: '22px',
+                fontFamily: 'Arial',
+                color: '#373b74',
               },
             },
           },
@@ -48,6 +80,7 @@ const DonutChart = () => {
           series={chartOptions.series}
           type="donut"
           height={250}
+          width="250"
         />
       </div>
     </div>
@@ -57,7 +90,7 @@ const DonutChart = () => {
 // /components/Card.jsx
 const Card = ({ debtName, debtToPay, debtPaid, leftToSave }) => {
   return (
-    <div className="bg-white rounded-lg shadow-md p-6 m-4 w-full">
+    <div className="bg-white rounded-lg shadow-md p-6 m-4">
       <div className="flex items-center justify-center gap-4 py-4">
         <h3 className=" text-lg font-semibold  text-black">E commerce Debts</h3>
         <div className=" flex items-center gap-2">
@@ -144,7 +177,7 @@ const Debts = () => {
       {/* <!-- ===== Header Start ===== --> */}
       <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
       {/* <!-- ===== Header End ===== --> */}
-      <div className=" grid grid-cols-1 gap-3 md:grid-cols-3">
+      <div className="flex justify-center flex-wrap">
         {data.map((item, index) => (
           <Card
             key={index}
