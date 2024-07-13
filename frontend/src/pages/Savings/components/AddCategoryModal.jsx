@@ -1,31 +1,78 @@
 import { Dialog, Transition } from '@headlessui/react';
 import { Fragment, useState } from 'react';
+import { addSaving } from '../../../libs/postApis';
+import { useBackendDataStore } from '../../../Store Management/useBackendDataStore';
 
-export default function AddCategoryModal({ isOpen, setIsOpen }) {
+export default function AddCategoryModal({ isAOpen, setIsAOpen }) {
+  const { savings, updateAllSavings } = useBackendDataStore();
   const [category, setCategory] = useState('');
   const [accumulatedAmount, setAccumulatedAmount] = useState('');
   const [annualVariation, setAnnualVariation] = useState('');
   const [monthlyVariation, setMonthlyVariation] = useState('');
+  const [errors, setErrors] = useState({});
 
-  const handleSave = () => {
-    // Handle the save logic here
-    console.log({
-      category,
-      accumulatedAmount,
-      annualVariation,
-      monthlyVariation,
-    });
-    setIsOpen(false);
+  const validate = () => {
+    const newErrors = {};
+    if (!category) newErrors.category = 'Category is required';
+
+    if (!accumulatedAmount) {
+      newErrors.accumulatedAmount = 'Accumulated Amount is required';
+    } else if (parseFloat(accumulatedAmount) <= 0) {
+      newErrors.accumulatedAmount = 'Accumulated Amount must be greater than 0';
+    }
+
+    if (!annualVariation) {
+      newErrors.annualVariation = 'Annual % Variation is required';
+    } 
+
+    if (!monthlyVariation) {
+      newErrors.monthlyVariation = 'Monthly % Variation is required';
+    }
+
+    return newErrors;
+  };
+
+  const handleSave = async () => {
+    const validationErrors = validate();
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+    } else {
+      // Handle the save logic here
+      console.log({
+        category,
+        accumulatedAmount,
+        annualVariation,
+        monthlyVariation,
+      });
+      const result = await addSaving({
+        category,
+        accumulatedAmount,
+        annualVariation,
+        monthlyVariation,
+      });
+      if (result) {
+        console.log('Saving added successfully', result);
+        // Reset form or show success message
+        savings
+          ? updateAllSavings([...savings, result])
+          : updateAllSavings([result]);
+        setCategory('');
+        setAccumulatedAmount('');
+        setAnnualVariation('');
+        setMonthlyVariation('');
+        setIsAOpen(false);
+      }
+    }
   };
 
   return (
     <>
-      <Transition appear show={isOpen} as={Fragment}>
+      <Transition appear show={isAOpen} as={Fragment}>
         <Dialog
           as="div"
           style={{ zIndex: 99999999999000 }}
           className="relative z-10"
-          onClose={() => setIsOpen(!isOpen)}
+          onClose={() => setIsAOpen(!isAOpen)}
         >
           <Transition.Child
             as={Fragment}
@@ -60,7 +107,7 @@ export default function AddCategoryModal({ isOpen, setIsOpen }) {
                       />
                     </h2>
                     <button
-                      onClick={() => setIsOpen(false)}
+                      onClick={() => setIsAOpen(false)}
                       className="text-white"
                     >
                       <img src="/images/icon/icon-cross.svg" />
@@ -78,46 +125,58 @@ export default function AddCategoryModal({ isOpen, setIsOpen }) {
                       onChange={(e) => setCategory(e.target.value)}
                       placeholder="Category"
                     />
+                    {errors.category && (
+                      <p className="text-red-500">{errors.category}</p>
+                    )}
                   </div>
                   <div className="mt-4 px-6 flex flex-col gap-2">
                     <label className="block text-sm font-medium text-gray-700">
                       Accumulated Amount
                     </label>
                     <input
-                      type="text"
+                      type="Number"
                       className="mt-1 block w-full rounded-md border-[#dcdcdc] outline-none border-2 px-4 py-3 shadow-sm sm:text-sm"
                       value={accumulatedAmount}
                       onChange={(e) => setAccumulatedAmount(e.target.value)}
                       placeholder="Accumulated Amount"
                     />
+                    {errors.accumulatedAmount && (
+                      <p className="text-red-500">{errors.accumulatedAmount}</p>
+                    )}
                   </div>
                   <div className="mt-4 px-6 flex flex-col gap-2">
                     <label className="block text-sm font-medium text-gray-700">
                       Annual % Variation
                     </label>
                     <input
-                      type="text"
+                      type="Number"
                       className="mt-1 block w-full rounded-md border-[#dcdcdc] outline-none border-2 px-4 py-3 shadow-sm sm:text-sm"
                       value={annualVariation}
                       onChange={(e) => setAnnualVariation(e.target.value)}
                       placeholder="Annual % Variation"
                     />
+                    {errors.annualVariation && (
+                      <p className="text-red-500">{errors.annualVariation}</p>
+                    )}
                   </div>
                   <div className="mt-4 px-6 flex flex-col gap-2">
                     <label className="block text-sm font-medium text-gray-700">
                       Monthly % Variation
                     </label>
                     <input
-                      type="text"
+                      type="Number"
                       className="mt-1 block w-full rounded-md border-[#dcdcdc] outline-none border-2 px-4 py-3 shadow-sm sm:text-sm"
                       value={monthlyVariation}
                       onChange={(e) => setMonthlyVariation(e.target.value)}
                       placeholder="Monthly % Variation"
                     />
+                    {errors.monthlyVariation && (
+                      <p className="text-red-500">{errors.monthlyVariation}</p>
+                    )}
                   </div>
                   <div className="mt-6 px-6 pb-4 flex justify-center gap-3 items-center">
                     <button
-                      onClick={() => setIsOpen(false)}
+                      onClick={() => setIsAOpen(false)}
                       className="w-max inline-flex justify-center rounded-full border border-[#000] px-4 py-2 text-sm font-medium text-black shadow-sm hover:bg-gray-100"
                     >
                       Cancel

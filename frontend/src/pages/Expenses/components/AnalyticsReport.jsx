@@ -1,13 +1,62 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactApexChart from 'react-apexcharts';
 import DropdownList from './DropdownList';
+import { useBackendDataStore } from '../../../Store Management/useBackendDataStore';
 
 const AnalyticsReport = () => {
+  const [comparisonType, setComparisonType] = useState('Monthly');
+  const { expenses } = useBackendDataStore();
+  const [seriesData, setSeriesData] = useState([]);
+
+  useEffect(() => {
+    const currentDate = new Date();
+    const currentYear = currentDate.getFullYear();
+    const currentMonth = currentDate.getMonth();
+    const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+
+    const calculateDailyTotals = (month, year) => {
+      const totals = new Array(daysInMonth).fill(0);
+      expenses.forEach((category) => {
+        category.lists.forEach((expense) => {
+          const expenseDate = new Date(expense.expenseDate);
+          if (
+            expenseDate.getFullYear() === year &&
+            expenseDate.getMonth() === month
+          ) {
+            const day = expenseDate.getDate() - 1;
+            totals[day] += expense.amount;
+          }
+        });
+      });
+      return totals;
+    };
+
+    const calculateMonthlyTotals = (year) => {
+      const totals = new Array(12).fill(0);
+      expenses.forEach((category) => {
+        category.lists.forEach((expense) => {
+          const expenseDate = new Date(expense.expenseDate);
+          if (expenseDate.getFullYear() === year) {
+            const month = expenseDate.getMonth();
+            totals[month] += expense.amount;
+          }
+        });
+      });
+      return totals;
+    };
+
+    if (comparisonType === 'Monthly') {
+      setSeriesData(calculateDailyTotals(currentMonth, currentYear));
+    } else if (comparisonType === 'Yearly') {
+      setSeriesData(calculateMonthlyTotals(currentYear));
+    }
+  }, [expenses, comparisonType]);
+
   const options = {
     series: [
       {
         name: 'Analytics Report',
-        data: [78560, 50680, 60220, 75800, 69000, 83000],
+        data: seriesData,
       },
     ],
     options: {
@@ -48,24 +97,28 @@ const AnalyticsReport = () => {
         enabled: false,
       },
       xaxis: {
-        categories: [
-          '12',
-          '13',
-          '14',
-          '15',
-          '16',
-          '17',
-          '18',
-          '19',
-          '20',
-          '21',
-        ],
+        categories:
+          comparisonType === 'Monthly'
+            ? Array.from({ length: new Date().getDate() }, (_, i) => `${i + 1}`)
+            : [
+                'Jan',
+                'Feb',
+                'Mar',
+                'Apr',
+                'May',
+                'Jun',
+                'Jul',
+                'Aug',
+                'Sep',
+                'Oct',
+                'Nov',
+                'Dec',
+              ],
         labels: {
           style: {
             colors: ['#000'],
             fontWeight: '600', // Semibold
           },
-          offsetX: 10,
         },
       },
       yaxis: {
@@ -105,24 +158,26 @@ const AnalyticsReport = () => {
             Analytics Report
           </h2>
           <div className="flex gap-3 items-center ">
-            <DropdownList
-              dropDownoptions={['Total Earning']}
-              type={'Total Earning'}
-            />
             <div className="flex items-center gap-3 ">
               <DropdownList
                 dropDownoptions={['Monthly', 'Yearly']}
-                type={'Monthly'}
+                selectedOption={comparisonType}
+                setSelectedOption={setComparisonType}
               />
             </div>
           </div>
         </div>
-        <ReactApexChart
-          options={options.options}
-          series={options.series}
-          type="area"
-          height={250}
-        />
+
+        {expenses?.length > 0 ? (
+          <ReactApexChart
+            options={options.options}
+            series={options.series}
+            type="area"
+            height={250}
+          />
+        ) : (
+          <h3 className=" text-center my-6 text-black">No Graph Data</h3>
+        )}
       </div>
     </div>
   );

@@ -1,6 +1,7 @@
 import React from 'react';
 import { MdOutlineMapsHomeWork } from 'react-icons/md';
 import { IoArrowDown } from 'react-icons/io5';
+import { useBackendDataStore } from '../../../Store Management/useBackendDataStore';
 
 const data = [
   {
@@ -70,39 +71,73 @@ const data = [
     ],
   },
 ];
+const formatDate = (dateString) => {
+  const options = {
+    day: '2-digit',
+    month: 'short',
+    year: 'numeric',
+  };
+  const formattedDate = new Date(dateString).toLocaleDateString(
+    'en-GB',
+    options,
+  );
+
+  // Extracting day, month, and year
+  const dateObj = new Date(dateString);
+  const day = dateObj.toLocaleString('en-GB', { day: '2-digit' });
+  const month = dateObj.toLocaleString('en-GB', { month: 'short' });
+  const year = dateObj.toLocaleString('en-GB', { year: 'numeric' });
+
+  // Combining into desired format
+  return `${day} ${month}, ${year}`;
+};
+const getArrow = (change) => {
+  return change >= 10 ? '↑' : '↓';
+};
 const Breakdown = () => {
+  const { expenses } = useBackendDataStore();
   return (
-    <div className="grid xl:grid-cols-3 sm:grid-cols-2 xl:gap-10 lg:gap-7 gap-5">
-      {data.map((item, index) => (
-        <div key={index} className=" rounded-lg shadow-lg  ">
+    <div className=" flex flex-wrap text-[#7c7c80] items-start align-top flex-col sm:flex-row justify-center xl:gap-10 lg:gap-7 gap-5">
+      {expenses.map((expense, index) => (
+        <div key={index} className=" rounded-lg sm:w-[45%] w-full h-max shadow-lg  ">
           <div className="flex justify-between items-center border-b py-4 bg-[#FAFAFA] p-4 rounded-t-xl">
             <div className="flex items-center gap-3">
-              <div className="p-4 bg-[#D2D2D240] rounded-md text-[#878787] text-2xl">
-                <MdOutlineMapsHomeWork />
+              <div className=" bg-[#f3f3f3] flex flex-col h-full w-10 justify-center items-center px-2 py-3 rounded-md">
+                <img src={expense.icon} />
               </div>
               <div className="flex flex-col gap-2">
-                <div className="text-medium">{item.name}</div>
+                <div className="text-medium">{expense.category}</div>
                 <div className="text-xl font-bold text-black">
-                  {item.amount}
+                  ${expense.amount}
                 </div>
               </div>
             </div>
             <div>
-              <div className="inline-flex items-center text-black gap-2">
-                <div>{item.percentage}</div>
-                <IoArrowDown className="text-green-400" />
-              </div>
-              <div className="text-sm">{item.month}</div>
+              <p className="text-md text-black font-semibold">
+                {parseInt(expense.percentage)}%*{' '}
+                <span
+                  style={{
+                    color: parseInt(expense.percentage) <= 10 ? 'red' : 'green',
+                  }}
+                >
+                  {' '}
+                  {getArrow(parseInt(expense.percentage))}
+                </span>
+              </p>
+              <div className="text-sm">last month</div>
             </div>
           </div>
           <ul className="flex flex-col gap-4 mt-5 p-4 ">
-            {item.list.map((transaction) => (
-              <li className="flex items-center justify-between text-black font-semibold">
-                <div>{transaction.title}</div>
+            {expense.lists.map((item) => (
+              <li
+                key={item._id}
+                className="flex items-center justify-between text-black font-semibold"
+              >
+                <div>{item.expenseName}</div>
                 <div>
-                  <div>{transaction.price}</div>
-                  <div className="text-[#878787] font-light text-sm">
-                    {transaction.date}
+                  <div>${item.amount}</div>
+                  <div className="font-light text-sm">
+                    {formatDate(item.expenseDate)}
                   </div>
                 </div>
               </li>

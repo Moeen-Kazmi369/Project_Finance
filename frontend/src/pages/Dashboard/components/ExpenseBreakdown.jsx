@@ -1,55 +1,5 @@
 import React from 'react';
-
-const expensesData = [
-  {
-    category: 'Housing',
-    amount: 250.0,
-    percentage: 15,
-    change: 'up',
-    color: '#723097',
-    icon: '/images/icon/icon-housing.svg',
-  },
-  {
-    category: 'Food',
-    amount: 350.0,
-    percentage: 8,
-    change: 'down',
-    color: '#7c7c80',
-    icon: '/images/icon/icon-food.svg',
-  },
-  {
-    category: 'Transportation',
-    amount: 50.0,
-    percentage: 12,
-    change: 'down',
-    color: '#7c7c80',
-    icon: '/images/icon/icon-transportation.svg',
-  },
-  {
-    category: 'Entertainment',
-    amount: 80.0,
-    percentage: 15,
-    change: 'down',
-    color: '#7c7c80',
-    icon: '/images/icon/icon-entertainment.svg',
-  },
-  {
-    category: 'Shopping',
-    amount: 420.0,
-    percentage: 25,
-    change: 'up',
-    color: '#7c7c80',
-    icon: '/images/icon/icon-shopping.svg',
-  },
-  {
-    category: 'Others',
-    amount: 650.0,
-    percentage: 23,
-    change: 'up',
-    color: '#7c7c80',
-    icon: '/images/icon/icon-others.svg',
-  },
-];
+import { Link } from 'react-router-dom';
 
 const getArrow = (change) => {
   return change === 'up' ? '↑' : '↓';
@@ -74,42 +24,53 @@ const ExpensesCard = ({
       <div>
         <p className="text-gray-600">{category}</p>
         <p className="text-black text-lg font-semibold">${amount.toFixed(2)}</p>
-        <p
-          className="text-xs"
-          style={{ color: change === 'up' ? 'red' : 'green' }}
-        >
-          {percentage}% {getArrow(change)}
+        <p className="text-xs">
+          {percentage}%*{' '}
+          <span style={{ color: change === 'down' ? 'red' : 'green' }}>
+            {' '}
+            {getArrow(change)}
+          </span>
         </p>
       </div>
     </div>
-    <div>
+    <Link to={'/expenses'}>
       <span className="text-2xl " style={{ color: color }}>
         →
       </span>
-    </div>
+    </Link>
   </div>
 );
 
-const ExpensesBreakdown = () => (
-  <div className="sm:p-6">
-    <div className="flex flex-col sm:flex-row text-[#7c7c80] sm:items-center justify-between">
-      <h2 className="text-2xl ">Expenses Breakdown</h2>
-      <p className=" text-sm mt-4 self-end">*Compare to last month</p>
+const ExpensesBreakdown = ({ expenses }) => {
+  return (
+    <div className="sm:p-6">
+      <div className="flex flex-col sm:flex-row text-[#7c7c80] sm:items-center justify-between">
+        <h2 className="text-2xl ">Expenses Breakdown</h2>
+        <p className=" text-sm mt-4 self-end">*Compare to last month</p>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 shadow rounded-lg gap-4">
+        {expenses?.length > 0 ? (
+          <>
+            {expenses.map((expense, index) => (
+              <ExpensesCard
+                key={index}
+                category={expense.category}
+                amount={expense.amount}
+                percentage={parseInt(expense.percentage)}
+                change={parseInt(expense.percentage) >= 10 ? 'up' : 'down'}
+                color={expense.color}
+                icon={expense.icon}
+              />
+            ))}
+          </>
+        ) : (
+          <h3 className=" text-center my-4 col-span-2 text-black">
+            No Expenses
+          </h3>
+        )}
+      </div>
     </div>
-    <div className="grid grid-cols-1 md:grid-cols-2 shadow rounded-lg gap-4">
-      {expensesData.map((expense, index) => (
-        <ExpensesCard
-          key={index}
-          category={expense.category}
-          amount={expense.amount}
-          percentage={expense.percentage}
-          change={expense.change}
-          color={expense.color}
-          icon={expense.icon}
-        />
-      ))}
-    </div>
-  </div>
-);
+  );
+};
 
 export default ExpensesBreakdown;
