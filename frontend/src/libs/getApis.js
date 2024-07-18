@@ -13,7 +13,7 @@ const Icons = {
   Shopping,
   Others,
 };
-const backend_base = 'http://localhost:4000'; // Replace with your backend base URL
+const backend_base = 'https://api.kinglaf.com'; // Replace with your backend base URL
 
 export const getAllTransactions = async () => {
   try {
