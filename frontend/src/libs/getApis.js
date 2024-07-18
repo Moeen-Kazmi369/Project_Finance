@@ -49,7 +49,7 @@ export const getAllExpenses = async () => {
       let totalAmount = 0;
 
       // Group expenses by category and calculate total amount for each category
-      response?.data?.expenses.forEach((expense) => {
+      response?.data?.expenses?.forEach((expense) => {
         if (!groupedExpenses[expense.category]) {
           groupedExpenses[expense.category] = {
             category: expense.category,

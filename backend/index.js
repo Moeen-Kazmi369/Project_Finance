@@ -13,7 +13,7 @@ connectDB();
 
 const app = express();
 const corsOptions = {
-  origin: "kinglaf.com",
+  origin: ["https://kinglaf.com", "https://www.kinglaf.com"],
   methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
   allowedHeaders: ["Content-Type"],
   credentials: true,
