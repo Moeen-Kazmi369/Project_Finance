@@ -42,9 +42,12 @@ const DebtsAnalyticsReport = () => {
       chart: {
         type: 'area',
         height: 350,
-        toolbar: {
+         toolbar: {
           show: false,
         },
+        zoom: {
+          enabled: false
+        }
       },
       stroke: {
         curve: 'smooth',

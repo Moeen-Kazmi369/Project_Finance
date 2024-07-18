@@ -107,9 +107,12 @@ const TopTwoCards = () => {
       chart: {
         type: 'area',
         height: 100,
-        toolbar: {
+         toolbar: {
           show: false,
         },
+        zoom: {
+          enabled: false
+        }
         width: '100%', // Ensure the chart takes full width
         height: '100%', // Ensure the chart takes full width
       },
@@ -176,9 +179,12 @@ const TopTwoCards = () => {
       chart: {
         type: 'bar',
         height: 100,
-        toolbar: {
+         toolbar: {
           show: false,
         },
+        zoom: {
+          enabled: false
+        }
       },
       colors: ['#5c93fe', '#71299d', '#d39cf3'],
       plotOptions: {

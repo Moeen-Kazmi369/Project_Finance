@@ -16,7 +16,7 @@ const Statistics = () => {
     const calculateWeeklyTotals = (startDate) => {
       const totals = new Array(7).fill(0);
       expenses?.forEach((category) => {
-        category.lists?.forEach((expense) => {
+        category?.lists?.forEach((expense) => {
           const expenseDate = new Date(expense.expenseDate);
           if (
             expenseDate >= startDate &&
@@ -34,7 +34,7 @@ const Statistics = () => {
     const calculateMonthlyTotals = (year) => {
       const totals = new Array(12).fill(0);
       expenses?.forEach((category) => {
-        category.lists?.forEach((expense) => {
+        category?.lists?.forEach((expense) => {
           const expenseDate = new Date(expense.expenseDate);
           if (expenseDate.getFullYear() === year) {
             const month = expenseDate.getMonth();
@@ -81,9 +81,12 @@ const Statistics = () => {
       chart: {
         type: 'bar',
         height: 350,
-        toolbar: {
+         toolbar: {
           show: false,
         },
+        zoom: {
+          enabled: false
+        }
       },
       plotOptions: {
         bar: {

@@ -18,9 +18,12 @@ const Statistics = () => {
       chart: {
         type: 'bar',
         height: 350,
-        toolbar: {
+         toolbar: {
           show: false,
         },
+        zoom: {
+          enabled: false
+        }
       },
       plotOptions: {
         bar: {

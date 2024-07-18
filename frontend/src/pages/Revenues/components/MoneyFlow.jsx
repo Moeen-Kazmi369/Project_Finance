@@ -17,7 +17,7 @@ const MoneyFlow = () => {
     const calculateDailyTotals = (month, year) => {
       const totals = new Array(daysInMonth).fill(0);
       expenses?.forEach((category) => {
-        category.lists?.forEach((expense) => {
+        category?.lists?.forEach((expense) => {
           const expenseDate = new Date(expense.expenseDate);
           if (
             expenseDate.getFullYear() === year &&
@@ -34,7 +34,7 @@ const MoneyFlow = () => {
     const calculateMonthlyTotals = (year) => {
       const totals = new Array(12).fill(0);
       expenses?.forEach((category) => {
-        category.lists?.forEach((expense) => {
+        category?.lists?.forEach((expense) => {
           const expenseDate = new Date(expense.expenseDate);
           if (expenseDate.getFullYear() === year) {
             const month = expenseDate.getMonth();
@@ -63,9 +63,13 @@ const MoneyFlow = () => {
       chart: {
         type: 'area',
         height: 350,
-        toolbar: {
+         toolbar: {
           show: false,
         },
+        zoom: {
+          enabled: false
+        }
+        
       },
       stroke: {
         curve: 'smooth',
