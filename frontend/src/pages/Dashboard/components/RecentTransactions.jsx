@@ -50,7 +50,8 @@ const RecentTransactions = ({ transactions }) => {
           {transactions?.length > 0 ? (
             <>
               {' '}
-              {transactions.map((transaction, index) => (
+              {transactions?.slice()
+              .reverse().map((transaction, index) => (
                 <div
                   key={index}
                   className="flex items-center gap-3 justify-between py-4 border-b last:border-b-0"

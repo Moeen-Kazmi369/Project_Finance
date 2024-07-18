@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 const ClassificationTable = ({ isAOpen, setIsAOpen, isEOpen, setIsEOpen }) => {
   const { savings, updateAllSavings } = useBackendDataStore();
-  console.log(savings)
+  console.log(savings);
   const navigate = useNavigate();
   const data = [
     {
@@ -81,37 +81,40 @@ const ClassificationTable = ({ isAOpen, setIsAOpen, isEOpen, setIsEOpen }) => {
               </tr>
             </thead>
             <tbody>
-              {savings?.map((saving, index) => (
-                <tr key={index} className="border-b border-[#e8e7e7]">
-                  <td className="py-5 font-semibold text-[#a4a4a4] px-4">
-                    <input type="checkbox" />
-                  </td>
-                  <td className="py-5 font-semibold text-[#000] px-4">
-                    {saving.category}
-                  </td>
-                  <td className="py-5 font-semibold text-[#000] px-4">
-                    ${saving.accumulatedAmount}
-                  </td>
-                  <td className="py-5 font-semibold text-[#a4a4a4] px-4">
-                    {saving.annualVariation}%
-                  </td>
-                  <td className="py-5 font-semibold text-[#a4a4a4] px-4">
-                    {saving.monthlyVariation}%
-                  </td>
-                  <td className="py-5 flex gap-2 font-semibold text-[#a4a4a4] px-4">
-                    <img
-                      onClick={() => setIsEOpen(saving)}
-                      className=" cursor-pointer"
-                      src="/images/icon/icon-gray-edit.svg"
-                    />
-                    <img
-                      className=" cursor-pointer"
-                      onClick={() => handleDeleteSaving(saving._id)}
-                      src="/images/icon/icon-gray-delete.svg"
-                    />
-                  </td>
-                </tr>
-              ))}
+              {savings
+                ?.slice()
+                .reverse()
+                .map((saving, index) => (
+                  <tr key={index} className="border-b border-[#e8e7e7]">
+                    <td className="py-5 font-semibold text-[#a4a4a4] px-4">
+                      <input type="checkbox" />
+                    </td>
+                    <td className="py-5 font-semibold text-[#000] px-4">
+                      {saving.category}
+                    </td>
+                    <td className="py-5 font-semibold text-[#000] px-4">
+                      ${saving.accumulatedAmount}
+                    </td>
+                    <td className="py-5 font-semibold text-[#a4a4a4] px-4">
+                      {saving.annualVariation}%
+                    </td>
+                    <td className="py-5 font-semibold text-[#a4a4a4] px-4">
+                      {saving.monthlyVariation}%
+                    </td>
+                    <td className="py-5 flex gap-2 font-semibold text-[#a4a4a4] px-4">
+                      <img
+                        onClick={() => setIsEOpen(saving)}
+                        className=" cursor-pointer"
+                        src="/images/icon/icon-gray-edit.svg"
+                      />
+                      <img
+                        className=" cursor-pointer"
+                        onClick={() => handleDeleteSaving(saving._id)}
+                        src="/images/icon/icon-gray-delete.svg"
+                      />
+                    </td>
+                  </tr>
+                ))}
             </tbody>
           </table>
         ) : (

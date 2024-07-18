@@ -86,7 +86,8 @@ const TopThreeCards = ({ bills }) => {
         <h3 className="text-xl font-medium text-[#939393]">{cards[2].title}</h3>
         {cards[2]?.bills?.length > 0 ? (
           <div className="pl-1 text-[#636363] overflow-y-auto h-40 sm:h-72 xl:h-80 flex flex-col gap-4">
-            {cards[2].bills?.map((bill, idx) => (
+            {cards[2].bills?.slice()
+              .reverse().map((bill, idx) => (
               <div key={idx} className="flex items-center gap-1 md:gap-3">
                 <div className="bg-[#f3f3f3] flex flex-col w-12 items-center px-2 py-3 rounded-md">
                   <p>{getMonth(bill.dueDate)}</p>

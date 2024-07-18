@@ -215,15 +215,18 @@ const Debts = () => {
         {debts?.length > 0 ? (
           <>
             {' '}
-            {debts?.map((debt, index) => (
-              <Card
-                key={index}
-                debtName={debt.debtName}
-                category={debt.category}
-                payments={debt.payments}
-                debtId={debt._id}
-              />
-            ))}
+            {debts
+              ?.slice()
+              .reverse()
+              .map((debt, index) => (
+                <Card
+                  key={index}
+                  debtName={debt.debtName}
+                  category={debt.category}
+                  payments={debt.payments}
+                  debtId={debt._id}
+                />
+              ))}
           </>
         ) : (
           <h3 className=" text-black text-center my-24">No Debts</h3>

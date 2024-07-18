@@ -28,13 +28,16 @@ const TopTwoCards = () => {
 
     // Calculate daily totals for the current month
     const dailyTotals = new Array(daysInMonth).fill(0);
-    filteredSavings?.forEach((saving) => {
+    filteredSavings.forEach((saving) => {
       const savingDate = new Date(saving.createdAt).getDate() - 1;
       dailyTotals[savingDate] += saving.accumulatedAmount;
     });
 
     // Prepare data for area graph
-    const labels = Array.from({ length: daysInMonth }, (_, i) => `Day ${i + 1}`);
+    const labels = Array.from(
+      { length: daysInMonth },
+      (_, i) => `Day ${i + 1}`,
+    );
     const data = dailyTotals;
 
     setDailyData({ labels, data });
@@ -52,10 +55,12 @@ const TopTwoCards = () => {
       return acc;
     }, {});
 
-    savings?.forEach((saving) => {
+    savings.forEach((saving) => {
       const savingDate = new Date(saving.createdAt);
       if (savingDate.getFullYear() === currentYear) {
-        const monthYear = `${savingDate.getMonth() + 1}/${savingDate.getFullYear()}`;
+        const monthYear = `${
+          savingDate.getMonth() + 1
+        }/${savingDate.getFullYear()}`;
         if (monthlyTotals[monthYear] !== undefined) {
           monthlyTotals[monthYear] += saving.accumulatedAmount;
         }
@@ -94,7 +99,7 @@ const TopTwoCards = () => {
     // Step 4: Calculate percent for each progress bar
     const highestTotalAmount =
       progressBarsData.length > 0 ? progressBarsData[0].totalAmount : 0;
-    progressBarsData?.forEach((bar) => {
+    progressBarsData.forEach((bar) => {
       bar.percent = Math.round((bar.totalAmount / highestTotalAmount) * 100);
     });
     setTotalSavingsAmount(totalSavingsAmount);
@@ -107,12 +112,9 @@ const TopTwoCards = () => {
       chart: {
         type: 'area',
         height: 100,
-         toolbar: {
+        toolbar: {
           show: false,
         },
-        zoom: {
-          enabled: false
-        }
         width: '100%', // Ensure the chart takes full width
         height: '100%', // Ensure the chart takes full width
       },
@@ -179,12 +181,12 @@ const TopTwoCards = () => {
       chart: {
         type: 'bar',
         height: 100,
-         toolbar: {
+        toolbar: {
           show: false,
         },
         zoom: {
-          enabled: false
-        }
+          enabled: false,
+        },
       },
       colors: ['#5c93fe', '#71299d', '#d39cf3'],
       plotOptions: {
@@ -312,23 +314,26 @@ const TopTwoCards = () => {
         <h2 className="text-2xl font-semibold text-black mb-4">My Savings</h2>
         {progressBars?.length > 0 ? (
           <>
-            {progressBars?.map((item, index) => (
-              <div
-                key={index}
-                className="flex gap-3 items-center text-black font-semibold text-xl"
-              >
-                <div className="flex flex-col w-full gap-2 justify-between">
-                  <span>{item.label}</span>
-                  <div className="w-full bg-[#e8e7e7] h-2 rounded-full overflow-hidden">
-                    <div
-                      className="bg-[#71299d] h-full"
-                      style={{ width: `${item.percent}%` }}
-                    ></div>
+            {progressBars
+              ?.slice()
+              .reverse()
+              .map((item, index) => (
+                <div
+                  key={index}
+                  className="flex gap-3 items-center text-black font-semibold text-xl"
+                >
+                  <div className="flex flex-col w-full gap-2 justify-between">
+                    <span>{item.label}</span>
+                    <div className="w-full bg-[#e8e7e7] h-2 rounded-full overflow-hidden">
+                      <div
+                        className="bg-[#71299d] h-full"
+                        style={{ width: `${item.percent}%` }}
+                      ></div>
+                    </div>
                   </div>
+                  <span>${item.totalAmount}</span>
                 </div>
-                <span>${item.totalAmount}</span>
-              </div>
-            ))}
+              ))}
           </>
         ) : (
           <h3 className=" text-center my-6 text-black">No Savings</h3>
