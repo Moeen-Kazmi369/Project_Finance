@@ -123,14 +123,14 @@ const Card = ({ debtName, category, payments, debtId }) => {
                 },
               })
             }
-            src="/public/images/icon/icon-gray-edit.svg"
+            src="/images/icon/icon-gray-edit.svg"
             alt="Edit"
             className=" cursor-pointer"
           />
           <img
             onClick={() => handleDeleteDebt(debtId)}
             className=" cursor-pointer"
-            src="/public/images/icon/icon-gray-delete.svg"
+            src="/images/icon/icon-gray-delete.svg"
             alt="Delete"
           />
         </div>
