@@ -85,7 +85,7 @@ const TopThreeCards = () => {
           </p>
         </div>
         <Slider {...settings}>
-          {cards[0].accounts.map((account, index) => (
+          {cards[0].accounts?.map((account, index) => (
             <div key={index} className="pl-2">
               <div className="flex items-center bg-[#71299d] text-white p-4 rounded-md">
                 <div className="flex-grow">
@@ -176,7 +176,7 @@ const TopThreeCards = () => {
       <div className="bg-white flex flex-col justify-between gap-3 py-5 p-3 rounded-2xl shadow">
         <h3 className="text-xl font-medium text-[#939393]">{cards[2].title}</h3>
         <div className="pl-2 text-[#636363] flex flex-col gap-4">
-          {cards[2].bills.map((bill, idx) => (
+          {cards[2].bills?.map((bill, idx) => (
             <div key={idx} className="flex justify-between items-center gap-1">
               <div className="bg-[#f3f3f3] flex flex-col w-12 items-center px-2 py-3 rounded-md">
                 <p>{bill.month}</p>
