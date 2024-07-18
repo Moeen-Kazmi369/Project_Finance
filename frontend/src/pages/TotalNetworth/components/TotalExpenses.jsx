@@ -71,8 +71,8 @@ const TotalExpenses = () => {
     let monthlyTotal = 0;
     const categoryTotals = {};
 
-    expenses.forEach((category) => {
-      category.lists.forEach((expense) => {
+    expenses?.forEach((category) => {
+      category.lists?.forEach((expense) => {
         const expenseDate = new Date(expense.expenseDate);
         const amount = expense.amount;
 

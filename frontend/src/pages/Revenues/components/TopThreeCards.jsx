@@ -29,7 +29,7 @@ const TopThreeCards = () => {
       let totalBills = 0;
       let totalExpenses = 0;
 
-      transactions.forEach((transaction) => {
+      transactions?.forEach((transaction) => {
         const transactionDate = new Date(transaction.transactionDate);
         if (
           transactionDate.getFullYear() === year &&
@@ -39,7 +39,7 @@ const TopThreeCards = () => {
         }
       });
 
-      bills.forEach((bill) => {
+      bills?.forEach((bill) => {
         const billDueDate = new Date(bill.dueDate);
         if (
           billDueDate.getFullYear() === year &&
@@ -49,7 +49,7 @@ const TopThreeCards = () => {
         }
       });
 
-      expenses.forEach((expense) => {
+      expenses?.forEach((expense) => {
         const expenseDate = new Date(expense.expenseDate);
         if (
           expenseDate.getFullYear() === year &&
@@ -132,7 +132,7 @@ const TopThreeCards = () => {
 
       let totalSpend = 0;
 
-      transactions.forEach((transaction) => {
+      transactions?.forEach((transaction) => {
         const transactionDate = new Date(transaction.transactionDate);
         if (transactionDate >= start && transactionDate <= end) {
           totalSpend += transaction.amount;
@@ -149,7 +149,7 @@ const TopThreeCards = () => {
       let totalBills = 0;
       const billsAmounts = [];
 
-      bills.forEach((bill) => {
+      bills?.forEach((bill) => {
         totalBills += bill.amount;
         billsAmounts.push(bill.amount);
       });

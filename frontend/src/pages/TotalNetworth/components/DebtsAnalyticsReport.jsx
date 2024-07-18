@@ -14,8 +14,8 @@ const DebtsAnalyticsReport = () => {
 
     const calculateMonthlyTotals = (year) => {
       const totals = new Array(12).fill(0);
-      debts.forEach((debt) => {
-        debt.payments.forEach((payment) => {
+      debts?.forEach((debt) => {
+        debt.payments?.forEach((payment) => {
           const paymentDate = new Date(debt.createdAt); // Assuming debts have a `createdAt` date
           if (paymentDate.getFullYear() === year) {
             const month = paymentDate.getMonth();

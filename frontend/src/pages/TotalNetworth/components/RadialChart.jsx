@@ -17,8 +17,8 @@ const RadialChart = () => {
 
     const calculateMonthlyTotal = (month, year) => {
       let total = 0;
-      debts.forEach(debt => {
-        debt.payments.forEach(payment => {
+      debts?.forEach(debt => {
+        debt.payments?.forEach(payment => {
           const paymentDate = new Date(debt.createdAt);
           if (paymentDate.getFullYear() === year && paymentDate.getMonth() === month) {
             total += payment.amount;

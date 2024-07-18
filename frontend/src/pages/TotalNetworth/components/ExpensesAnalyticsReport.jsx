@@ -16,8 +16,8 @@ const ExpensesAnalyticsReport = () => {
 
     const calculateDailyTotals = (month, year) => {
       const totals = new Array(daysInMonth).fill(0);
-      expenses.forEach((category) => {
-        category.lists.forEach((expense) => {
+      expenses?.forEach((category) => {
+        category.lists?.forEach((expense) => {
           const expenseDate = new Date(expense.expenseDate);
           if (
             expenseDate.getFullYear() === year &&
@@ -33,8 +33,8 @@ const ExpensesAnalyticsReport = () => {
 
     const calculateMonthlyTotals = (year) => {
       const totals = new Array(12).fill(0);
-      expenses.forEach((category) => {
-        category.lists.forEach((expense) => {
+      expenses?.forEach((category) => {
+        category.lists?.forEach((expense) => {
           const expenseDate = new Date(expense.expenseDate);
           if (expenseDate.getFullYear() === year) {
             const month = expenseDate.getMonth();

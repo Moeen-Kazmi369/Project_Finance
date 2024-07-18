@@ -51,7 +51,7 @@ const EditDebts = () => {
 
     if (!debtName) validationErrors.debtName = 'Debt Name is required';
     if (!category) validationErrors.category = 'Category is required';
-    payments.forEach((payment, index) => {
+    payments?.forEach((payment, index) => {
       if (!payment.name) {
         validationErrors[`paymentName${index}`] = 'Payment Name is required';
       }

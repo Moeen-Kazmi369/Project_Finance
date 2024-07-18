@@ -66,7 +66,7 @@ export const getAllExpenses = async () => {
       });
 
       // Calculate percentage for each category
-      Object.keys(groupedExpenses).forEach((category) => {
+      Object.keys(groupedExpenses)?.forEach((category) => {
         groupedExpenses[category].percentage =
           (groupedExpenses[category].amount / totalAmount) * 100;
       });

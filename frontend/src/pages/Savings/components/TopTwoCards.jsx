@@ -28,7 +28,7 @@ const TopTwoCards = () => {
 
     // Calculate daily totals for the current month
     const dailyTotals = new Array(daysInMonth).fill(0);
-    filteredSavings.forEach((saving) => {
+    filteredSavings?.forEach((saving) => {
       const savingDate = new Date(saving.createdAt).getDate() - 1;
       dailyTotals[savingDate] += saving.accumulatedAmount;
     });
@@ -52,7 +52,7 @@ const TopTwoCards = () => {
       return acc;
     }, {});
 
-    savings.forEach((saving) => {
+    savings?.forEach((saving) => {
       const savingDate = new Date(saving.createdAt);
       if (savingDate.getFullYear() === currentYear) {
         const monthYear = `${savingDate.getMonth() + 1}/${savingDate.getFullYear()}`;
@@ -94,7 +94,7 @@ const TopTwoCards = () => {
     // Step 4: Calculate percent for each progress bar
     const highestTotalAmount =
       progressBarsData.length > 0 ? progressBarsData[0].totalAmount : 0;
-    progressBarsData.forEach((bar) => {
+    progressBarsData?.forEach((bar) => {
       bar.percent = Math.round((bar.totalAmount / highestTotalAmount) * 100);
     });
     setTotalSavingsAmount(totalSavingsAmount);
