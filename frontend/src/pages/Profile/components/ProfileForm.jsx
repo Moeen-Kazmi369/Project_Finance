@@ -5,7 +5,7 @@ import { useSidebarStore } from '../../../Store Management/useSidebarStore';
 
 export default function ProfileForm() {
   const [initialFormData, setInitialFormData] = useState(null);
-  const { profileData } = useSidebarStore();
+  const { profileData, setProfileData } = useSidebarStore();
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -68,7 +68,9 @@ export default function ProfileForm() {
       formDataToSend.append(key, formData[key]);
     }
 
-    await updateProfile(id, formDataToSend);
+    const res = await updateProfile(id, formDataToSend);
+    console.log(res);
+    setProfileData(res);
     // Optionally, you can refetch the profile data here to refresh the form with updated data
     setIsloading(false);
   };
