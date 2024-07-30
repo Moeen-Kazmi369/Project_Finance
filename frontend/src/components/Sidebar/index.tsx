@@ -117,7 +117,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
       <div className="flex items-center justify-between px-6 gap-2 py-5.5 lg:py-6.5">
         <div className='px-4 md:mt-16'>
           <div className='mb-3 relative'>
-          <img src={image_base + profileData?.image} className=' rounded-2xl'/>
+          <img src={image_base + profileData?.image} className=' h-24 w-24 rounded-2xl'/>
           <span className=' text-white font-bold text-xs py-1 px-2 bg-red-800 rounded-full absolute left-20 top-0 shadow'>4</span>
           </div>
           <h3 className=' text-white font-extrabold flex items-center gap-2 text-2xl'>{profileData?.firstName} <img onClick={()=>navigate('/profile')} src='/images/icon/icon-white-edit.svg'/></h3>
