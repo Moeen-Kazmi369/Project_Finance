@@ -117,6 +117,9 @@ const AnalyticsReport = () => {
                 'Nov',
                 'Dec',
               ],
+        axisBorder: {
+          show: false,
+        },
         labels: {
           style: {
             colors: ['#000'],
